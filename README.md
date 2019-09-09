@@ -1,3 +1,3 @@
 # froggins-client
 
-> :frog: Client for [Froggins](https://froggins.andrewzigler.com) browser game.
+> :frog::computer: Client for [Froggins](https://froggins.andrewzigler.com) browser game.
