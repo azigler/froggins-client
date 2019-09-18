@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <WebSocketExample />
+    <Debug />
   </div>
 </template>
 
 <script>
-import WebSocketExample from './components/WebSocketExample.vue'
+import Debug from './components/Debug.vue'
 
 export default {
   name: 'app',
   components: {
-    WebSocketExample
+    Debug
   }
 }
 </script>
