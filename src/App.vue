@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <WebSocketExample />
-    <img alt="Vue logo" src="./assets/logo.png" />
   </div>
 </template>
 
