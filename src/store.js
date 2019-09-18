@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import Ribbit from './assets/ribbit'
+import Ribbit from '/Users/andrew/Projects/froggins-server/ribbit/ribbit.js'
 
 Vue.use(Vuex)
 
