@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueNativeSock from 'vue-native-websocket'
 import store from './store'
-import Ribbit from './assets/ribbit'
 
 Vue.config.productionTip = false
 
@@ -17,8 +16,6 @@ Vue.use(
     store
   }
 )
-
-Vue.use(Ribbit)
 
 new Vue({
   store,

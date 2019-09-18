@@ -1,11 +1,5 @@
-class Ribbit {
-  constructor() {
-    console.log('Ribbit constructor fired!')
-  }
-}
-
-export default {
-  install(Vue) {
-    Vue.ribbit = new Ribbit()
+export default class Ribbit {
+  static debug() {
+    return console.log('Ribbit is loaded and working!')
   }
 }
