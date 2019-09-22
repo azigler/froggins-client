@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import FrogginsClient from './FrogginsClient.vue'
 import VueNativeSock from 'vue-native-websocket'
 import store from './store'
 
@@ -19,5 +19,5 @@ Vue.use(
 
 new Vue({
   store,
-  render: h => h(App)
+  render: h => h(FrogginsClient)
 }).$mount('#app')
