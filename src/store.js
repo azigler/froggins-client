@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-import Ribbit from '../ribbit/ribbit'
 
 Vue.use(Vuex)
 
@@ -12,11 +10,20 @@ export default new Vuex.Store({
       message: '',
       reconnectError: false
     },
+    server: {
+      connectedPlayers: [],
+      online: false
+    },
+    player: {
+      authenticated: false,
+      uuid: ''
+    },
     debug: {
       clicks: 0
     }
   },
   mutations: {
+    // WEBSOCKETS
     SOCKET_ONOPEN(state, event) {
       Vue.prototype.$socket = event.currentTarget
       state.socket.isConnected = true
@@ -24,9 +31,11 @@ export default new Vuex.Store({
     },
     SOCKET_ONCLOSE(state) {
       if (state.socket.isConnected) {
+        state.socket.isConnected = false
+        state.server.online = false
+        state.player.authenticated = false
         console.log('🔌❌ WebSocket disconnected!')
       }
-      state.socket.isConnected = false
     },
     SOCKET_ONERROR(state, event) {
       console.log('🔌🚫 WebSocket error!')
@@ -39,22 +48,20 @@ export default new Vuex.Store({
       console.log('🔌🔄🚫 WebSocket reconnection error!')
       state.socket.reconnectError = true
     },
-
-    // TODO: use Ribbit to interpret message
     SOCKET_ONMESSAGE(state, message) {
-      console.log('🔌📝 WebSocket message received!')
+      console.log('🔌📝 WebSocket message received:', message)
       state.socket.message = message
-      Ribbit.debug()
     },
 
-    // TODO: use Ribbit to send data back to server
-    SET_CLICKS(state, message) {
-      state.debug.clicks = message
+    // FROGGINS
+    SET_SERVER(state, server) {
+      state.server = { ...state.server, ...server }
+    },
+    SET_PLAYER(state, player) {
+      state.player = { ...state.player, ...player }
+    },
+    SET_DEBUG(state, debug) {
+      state.debug = { ...state.debug, ...debug }
     }
-  },
-  plugins: [
-    createPersistedState({
-      key: 'froggins'
-    })
-  ]
+  }
 })

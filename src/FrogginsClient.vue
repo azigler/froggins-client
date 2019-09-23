@@ -8,34 +8,34 @@
       <RibbitSocket v-else />
     </div>
     <div class="client-handler" v-if="$store.state.server.online">
-      <FrogginsClient v-if="$store.state.user.authenticated" />
-      <UserLogin v-else />
+      <Debug v-if="$store.state.player.authenticated" />
+      <PlayerLogin v-else />
     </div>
   </div>
 </template>
 
 <script>
 import RibbitSocket from './components/RibbitSocket.vue'
-import FrogginsClient from './components/FrogginsClient.vue'
-import UserLogin from './components/UserLogin.vue'
+import Debug from './components/Debug.vue'
+import PlayerLogin from './components/PlayerLogin.vue'
 
 export default {
   name: 'App',
   components: {
     RibbitSocket,
-    FrogginsClient,
-    UserLogin
+    Debug,
+    PlayerLogin
   },
   mounted() {
     this.$options.sockets.onmessage = msg => {
       let data = JSON.parse(msg.data)
 
-      switch (data.id) {
-        case 'report-server-started': {
-          console.log(
-            `report-server-status event fired with value: ${data.value}`
-          )
-          return this.$store.commit('SET_SERVER_STATUS', data.value)
+      // Ribbit required to detect server status (most important)
+      if (!data.type) {
+        switch (data.id) {
+          case 'server.online': {
+            return this.$store.commit('SET_SERVER', { online: data.value })
+          }
         }
       }
     }

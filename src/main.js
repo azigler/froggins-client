@@ -1,9 +1,22 @@
 import Vue from 'vue'
-import App from './App.vue'
+import FrogginsClient from './FrogginsClient.vue'
 import VueNativeSock from 'vue-native-websocket'
 import store from './store'
+import moment from 'moment'
 
 Vue.config.productionTip = false
+
+Vue.mixin({
+  methods: {
+    ribbitSend: function(message) {
+      const data = {
+        timestamp: moment().format(),
+        ...message
+      }
+      this.$socket.sendObj(data)
+    }
+  }
+})
 
 Vue.use(
   VueNativeSock,
@@ -19,5 +32,6 @@ Vue.use(
 
 new Vue({
   store,
-  render: h => h(App)
+
+  render: h => h(FrogginsClient)
 }).$mount('#app')
