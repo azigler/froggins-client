@@ -1,5 +1,5 @@
 <template>
-  <div class="froggins-client">
+  <div class="panel debug">
     <div>
       <button @click="clickButton()">Click Me!</button>
       <span> {{ $store.state.player.uuid }} </span>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'Debug',
+  name: 'PanelDebug',
   methods: {
     // TODO: use Ribbit to send data back to server
     clickButton() {
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-.froggins-client {
+.panel.debug {
   background-color: #9ad89a;
   border-radius: 1.2rem;
   border: 0.05rem solid #495d49;

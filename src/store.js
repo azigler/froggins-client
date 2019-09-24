@@ -49,8 +49,10 @@ export default new Vuex.Store({
       state.socket.reconnectError = true
     },
     SOCKET_ONMESSAGE(state, message) {
-      console.log('🔌📝 WebSocket message received:', message)
       state.socket.message = message
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🐸⬇ Ribbit received:', JSON.parse(JSON.stringify(message)))
+      }
     },
 
     // FROGGINS
