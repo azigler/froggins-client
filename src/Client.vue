@@ -2,7 +2,7 @@
   <div id="client">
     <div class="server-handler">
       <div class="froggins-offline" v-if="!$store.state.server.online">
-        🐸💔Froggins is offline.
+        🐸💔 <span id="froggins">Froggins</span> is offline.
       </div>
       <RibbitSocket v-else />
     </div>
@@ -61,6 +61,10 @@ html {
   body {
     margin: 0;
   }
+}
+
+#froggins {
+  font-style: italic;
 }
 
 .froggins-offline {
