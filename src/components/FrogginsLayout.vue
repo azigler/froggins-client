@@ -4,11 +4,11 @@
       <h1 id="froggins">Froggins</h1>
     </header>
     <nav>
-      <a href="/">Example</a>
-      <a href="/">Example2</a>
+      <router-link to="/">Home</router-link>
+      <router-link to="/debug">Debug</router-link>
     </nav>
     <div id="main">
-      <PanelDebug v-if="!$store.state.player.authenticated" />
+      <router-view />
     </div>
     <footer>
       <span>Example</span>
@@ -18,13 +18,8 @@
 </template>
 
 <script>
-import PanelDebug from './PanelDebug.vue'
-
 export default {
-  name: 'FrogginsLayout',
-  components: {
-    PanelDebug
-  }
+  name: 'FrogginsLayout'
 }
 </script>
 
@@ -71,7 +66,7 @@ export default {
     }
   }
 
-  div#game {
+  div#main {
     margin-top: 1rem;
   }
 

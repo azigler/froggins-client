@@ -1,7 +1,9 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Client from './Client.vue'
 import VueNativeSock from 'vue-native-websocket'
 import store from './store'
+import routes from './routes.js'
 import moment from 'moment'
 
 Vue.config.productionTip = false
@@ -33,7 +35,24 @@ Vue.use(
   }
 )
 
+Vue.use(VueRouter)
+const router = new VueRouter({
+  routes,
+  mode: 'abstract'
+})
+
+router.beforeEach((to, from, next) => {
+  if (!store.state.player.authenticated) {
+    console.log('unauthenticated but works for now')
+    next()
+  } else {
+    console.log('authenticated, redirecting to home')
+    router.push('/')
+  }
+})
+
 new Vue({
   store,
+  router,
   render: h => h(Client)
 }).$mount('#client')

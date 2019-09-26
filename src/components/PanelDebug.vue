@@ -48,6 +48,12 @@ export default {
       type: 'add-handler',
       id: 'debug'
     })
+  },
+  destroyed() {
+    this.ribbitSend({
+      type: 'remove-handler',
+      id: 'debug'
+    })
   }
 }
 </script>
