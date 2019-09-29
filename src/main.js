@@ -30,7 +30,7 @@ Vue.use(
     format: 'json',
     reconnection: true,
     reconnectionAttempts: 1 * 100,
-    reconnectionDelay: 3 * 1000,
+    reconnectionDelay: 1 * 1000,
     store
   }
 )
@@ -42,11 +42,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!store.state.player.authenticated) {
-    console.log('unauthenticated but works for now')
+  if (store.state.player.authenticated) {
+    console.log('authenticated, proceeding...')
     next()
   } else {
-    console.log('authenticated, redirecting to home')
+    console.log('unauthenticated, redirecting to home')
     router.push('/')
   }
 })

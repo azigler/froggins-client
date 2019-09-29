@@ -1,5 +1,8 @@
 <template>
   <div id="client">
+    <header>
+      <h1 id="froggins">Froggins</h1>
+    </header>
     <div class="server-handler">
       <div class="froggins-offline" v-if="!$store.state.server.online">
         🐸💔 <span id="froggins">Froggins</span> is offline.
@@ -7,8 +10,8 @@
       <RibbitSocket v-else />
     </div>
     <div class="client-handler" v-if="$store.state.server.online">
-      <FrogginsLayout v-if="!$store.state.player.authenticated" />
-      <FrogginsLogin v-else />
+      <FrogginsLayout v-if="$store.state.player.authenticated" />
+      <FrogginsAuth v-else />
     </div>
   </div>
 </template>
@@ -16,14 +19,14 @@
 <script>
 import RibbitSocket from './components/RibbitSocket.vue'
 import FrogginsLayout from './components/FrogginsLayout.vue'
-import FrogginsLogin from './components/FrogginsLogin.vue'
+import FrogginsAuth from './components/FrogginsAuth.vue'
 
 export default {
   name: 'Client',
   components: {
     RibbitSocket,
     FrogginsLayout,
-    FrogginsLogin
+    FrogginsAuth
   },
   mounted() {
     this.$options.sockets.onmessage = msg => {
@@ -65,6 +68,18 @@ html {
 
 #froggins {
   font-style: italic;
+}
+
+header {
+  margin-top: 0;
+  background-color: #d5ecd5;
+  border-bottom: 2px solid #1d2f1d;
+
+  h1#froggins {
+    font-size: 2rem;
+    margin: 0;
+    user-select: none;
+  }
 }
 
 .froggins-offline {

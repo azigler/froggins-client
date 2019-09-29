@@ -1,8 +1,5 @@
 <template>
   <div class="froggins-layout">
-    <header>
-      <h1 id="froggins">Froggins</h1>
-    </header>
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/debug">Debug</router-link>
@@ -25,25 +22,12 @@ export default {
 
 <style lang="scss">
 .froggins-layout {
-  header {
-    margin-top: 0;
-    background-color: #d5ecd5;
-
-    h1#froggins {
-      font-size: 2rem;
-      margin: 0;
-      user-select: none;
-    }
-  }
-
   nav {
     padding: 0rem 2rem;
     background-color: #f5f556;
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid #1d2f1d;
-    border-left: none;
-    border-right: none;
+    border-bottom: 1px solid #1d2f1d;
 
     a {
       background-color: #ecec87;
