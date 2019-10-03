@@ -8,6 +8,10 @@ import moment from 'moment'
 
 Vue.config.productionTip = false
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1)
+}
+
 Vue.mixin({
   methods: {
     ribbitSend: function(message) {
@@ -18,6 +22,21 @@ Vue.mixin({
       this.$socket.sendObj(data)
       if (process.env.NODE_ENV === 'development') {
         console.log('🐸⬆ Ribbit sent:', message)
+      }
+    },
+    validate: function({ label, field, length = false, alphanumeric = false }) {
+      if (field.length === 0) {
+        return `No ${label} was provided.`
+      }
+
+      if (length !== false && field.length < length) {
+        return `${label.capitalize()} is not long enough.`
+      }
+
+      if (alphanumeric && /^[a-zA-Z0-9]+$/.test(field) === false) {
+        return `${label.capitalize()} contains invalid characters.`
+      } else {
+        return true
       }
     }
   }
