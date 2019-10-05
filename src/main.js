@@ -44,7 +44,9 @@ Vue.mixin({
 
 Vue.use(
   VueNativeSock,
-  `ws://${process.env.VUE_APP_WEBSOCKET_URL}:${process.env.VUE_APP_WEBSOCKET_PORT}`,
+  `ws${process.env.mode === 'development' ? '' : 's'}://${
+    process.env.VUE_APP_WEBSOCKET_URL
+  }:${process.env.VUE_APP_WEBSOCKET_PORT}`,
   {
     format: 'json',
     reconnection: true,
