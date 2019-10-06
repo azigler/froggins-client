@@ -2,7 +2,7 @@
   <div class="froggins-layout">
     <aside class="sidebar">
       <div class="top">
-        <h1>Froggins1</h1>
+        <h1>Froggins</h1>
         <div
           :class="`hamburger ${navShow ? 'open' : ''}`"
           @click="navShow = !navShow"
