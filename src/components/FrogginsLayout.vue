@@ -112,14 +112,13 @@ export default {
 <style lang="scss">
 .froggins-layout {
   display: flex;
+  overflow: hidden;
 
   aside.sidebar {
     display: flex;
     flex-direction: column;
     height: 100vh;
     border-right: 2px solid #1d2f1d;
-    width: 14rem;
-    width: 25%;
 
     &.hidden {
       margin-left: -11rem;
@@ -266,7 +265,7 @@ export default {
   }
 
   div#main {
-    width: 100%;
+    flex: auto;
   }
 
   button {
