@@ -124,6 +124,7 @@ export default {
       } else {
         if (data.id === 'confirm-login' || data.id === 'confirm-registration') {
           this.$store.commit('SET_PLAYER', { authenticated: true })
+          this.$router.replace('/')
         }
       }
     }

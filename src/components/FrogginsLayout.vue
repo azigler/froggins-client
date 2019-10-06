@@ -1,19 +1,12 @@
 <template>
   <div class="froggins-layout">
-    <aside class="sidebar">
+    <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
       <div class="top">
         <h1>Froggins</h1>
-        <div
-          :class="`hamburger ${navShow ? 'open' : ''}`"
-          @click="navShow = !navShow"
-        >
+        <div class="hamburger" @click="hideSidebar = !hideSidebar">
           ☰
         </div>
       </div>
-      <nav v-if="navShow">
-        <router-link to="/">Home</router-link>
-        <router-link to="/debug">Debug</router-link>
-      </nav>
       <div class="map">Map or description of area</div>
       <div class="online-bar">
         <span class="time">🕰️ {{ time }}</span>
@@ -21,20 +14,58 @@
           >👥 {{ $store.state.server.connectedPlayers.length }}</span
         >
       </div>
-      <div class="window">
-        <div class="tabs">
-          <div class="froggins">🦎</div>
-          <div class="items">📦</div>
-          <div class="structures">🏠</div>
-          <div class="world">🌐</div>
-          <div class="help">❔</div>
+      <div class="bottom">
+        <div class="panels">
+          <div class="tabs">
+            <div
+              @click="panelTab = 'PanelFroggins'"
+              :class="
+                `froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
+              "
+            >
+              🦎
+            </div>
+            <div
+              @click="panelTab = 'PanelItems'"
+              :class="`froggins ${panelTab === 'PanelItems' ? 'selected' : ''}`"
+            >
+              📦
+            </div>
+            <div
+              @click="panelTab = 'PanelStructures'"
+              :class="
+                `froggins ${panelTab === 'PanelStructures' ? 'selected' : ''}`
+              "
+            >
+              🏠
+            </div>
+            <div
+              @click="panelTab = 'PanelWorld'"
+              :class="`froggins ${panelTab === 'PanelWorld' ? 'selected' : ''}`"
+            >
+              🌐
+            </div>
+            <div
+              @click="panelTab = 'PanelHelp'"
+              :class="`froggins ${panelTab === 'PanelHelp' ? 'selected' : ''}`"
+            >
+              ❔
+            </div>
+          </div>
+          <component :is="panelTab" class="content">
+            ok
+          </component>
         </div>
-        <div class="content">
-          ok
+        <div class="discord">
+          <a href="https://discord.gg/QscwwBH">CHAT ON DISCORD</a>
         </div>
       </div>
     </aside>
     <div id="main">
+      <nav v-if="navShow">
+        <router-link to="/">Home</router-link>
+        <router-link to="/debug">Debug</router-link>
+      </nav>
       <router-view />
     </div>
   </div>
@@ -42,13 +73,27 @@
 
 <script>
 import moment from 'moment'
+import PanelFroggins from './PanelFroggins'
+import PanelItems from './PanelItems'
+import PanelStructures from './PanelStructures'
+import PanelWorld from './PanelWorld'
+import PanelHelp from './PanelHelp'
 
 export default {
   name: 'FrogginsLayout',
+  components: {
+    PanelFroggins,
+    PanelItems,
+    PanelStructures,
+    PanelWorld,
+    PanelHelp
+  },
   data() {
     return {
-      navShow: false,
-      time: ''
+      navShow: true,
+      hideSidebar: false,
+      time: '',
+      panelTab: 'PanelFroggins'
     }
   },
   mounted() {
@@ -74,6 +119,11 @@ export default {
     height: 100vh;
     border-right: 2px solid #1d2f1d;
     width: 14rem;
+    width: 25%;
+
+    &.hidden {
+      margin-left: -11rem;
+    }
 
     .top {
       justify-content: space-between;
@@ -100,7 +150,6 @@ export default {
         box-shadow: 0px 8px 0px 0px #304030;
 
         &.open {
-          margin-top: 1rem;
           box-shadow: 0px -8px 0px 0px #304030;
         }
 
@@ -142,7 +191,16 @@ export default {
       }
     }
 
-    .window {
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: inherit;
+
+      .panels {
+        height: 90%;
+      }
+
       .tabs {
         display: flex;
         justify-content: center;
@@ -150,13 +208,16 @@ export default {
         margin: 0 0.2rem;
         border-radius: 5px;
         background-color: gray;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
 
         div {
           border-right: 2px solid #1c2f1c;
           padding: 0 0.4rem 0 0.5rem;
           background-color: #cccc7d;
 
-          &:hover {
+          &:hover,
+          &.selected {
             background-color: red;
             cursor: pointer;
           }
@@ -166,6 +227,15 @@ export default {
           }
         }
       }
+
+      .panel {
+        background-color: #9ad89a;
+        border: 2px solid #495d49;
+        padding: 0.5rem;
+        margin: 0 0.2rem;
+        border-top: none;
+        height: inherit;
+      }
     }
   }
   nav {
@@ -174,7 +244,6 @@ export default {
     display: flex;
     justify-content: space-evenly;
     border-bottom: 2px solid #1d2f1d;
-    border-top: 2px solid #1d2f1d;
 
     a {
       background-color: #ecec87;
@@ -197,7 +266,7 @@ export default {
   }
 
   div#main {
-    margin-top: 1rem;
+    width: 100%;
   }
 
   button {
