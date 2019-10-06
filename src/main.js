@@ -44,7 +44,7 @@ Vue.mixin({
 
 Vue.use(
   VueNativeSock,
-  `ws${process.env.mode === 'development' ? '' : 's'}://${
+  `ws${process.env.NODE_ENV === 'development' ? '' : 's'}://${
     process.env.VUE_APP_WEBSOCKET_URL
   }:${process.env.VUE_APP_WEBSOCKET_PORT}`,
   {
@@ -64,10 +64,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (store.state.player.authenticated) {
-    console.log('authenticated, proceeding...')
     next()
   } else {
-    console.log('unauthenticated, redirecting to home')
     router.push('/')
   }
 })

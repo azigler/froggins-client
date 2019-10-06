@@ -1,11 +1,8 @@
 <template>
   <div id="client">
-    <header>
-      <h1 id="froggins">Froggins</h1>
-    </header>
     <div class="server-handler">
       <div class="froggins-offline" v-if="!$store.state.server.online">
-        🐸💔 <span id="froggins">Froggins</span> is offline.
+        You are disconnected from <span id="froggins">Froggins</span>. 🐸💔
       </div>
       <RibbitSocket v-else />
     </div>
@@ -68,18 +65,6 @@ html {
 
 #froggins {
   font-style: italic;
-}
-
-header {
-  margin-top: 0;
-  background-color: #d5ecd5;
-  border-bottom: 2px solid #1d2f1d;
-
-  h1#froggins {
-    font-size: 2rem;
-    margin: 0;
-    user-select: none;
-  }
 }
 
 .froggins-offline {

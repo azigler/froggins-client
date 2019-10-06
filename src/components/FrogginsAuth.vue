@@ -1,5 +1,8 @@
 <template>
   <div class="froggins-auth">
+    <header>
+      <h1 id="froggins">Froggins</h1>
+    </header>
     <div class="login" v-show="!register">
       <span>Log in</span>
       <input
@@ -52,8 +55,8 @@ export default {
   name: 'FrogginsAuth',
   data() {
     return {
-      username: '',
-      password: '',
+      username: `${process.env.NODE_ENV === 'development' ? 'debug1' : ''}`,
+      password: `${process.env.NODE_ENV === 'development' ? 'debug1' : ''}`,
       message: 'Welcome to Froggins!',
       register: false
     }
@@ -86,7 +89,7 @@ export default {
       }
     },
     registerPlayer() {
-      this.message = 'registering...'
+      this.message = 'Registering...'
 
       const usernameValidation = this.validate({
         label: 'username',
@@ -97,12 +100,8 @@ export default {
       const passwordValidation = this.validate({
         label: 'password',
         field: this.password,
-        length: 4
+        length: 6
       })
-
-      console.log(
-        `usrnam: ${usernameValidation} - psswd: ${passwordValidation}`
-      )
 
       if (usernameValidation === true && passwordValidation === true) {
         this.ribbitSend({
@@ -136,6 +135,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+header {
+  margin-top: 0;
+  background-color: #d5ecd5;
+  border-bottom: 2px solid #1d2f1d;
+
+  h1#froggins {
+    font-size: 2rem;
+    margin: 0;
+    user-select: none;
+  }
+}
+
 .login,
 .register {
   margin: 15% auto 0;

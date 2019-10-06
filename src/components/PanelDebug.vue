@@ -22,7 +22,6 @@
 export default {
   name: 'PanelDebug',
   methods: {
-    // TODO: use Ribbit to send data back to server
     clickButton() {
       this.ribbitSend({
         text: 'someone clicked a button',
@@ -62,7 +61,7 @@ export default {
 .panel.debug {
   background-color: #9ad89a;
   border-radius: 1.2rem;
-  border: 0.05rem solid #495d49;
+  border: 2px solid #495d49;
   padding: 1.5rem;
   width: 80%;
   margin: 0 auto;
