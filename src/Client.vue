@@ -88,10 +88,6 @@ html {
   }
 }
 
-#froggins {
-  font-style: italic;
-}
-
 .froggins-offline {
   background-color: #d7e6d7;
   border-radius: 0.4rem;

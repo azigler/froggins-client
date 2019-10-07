@@ -145,6 +145,11 @@ header {
     font-size: 2rem;
     margin: 0;
     user-select: none;
+
+    &::before {
+      content: '🐸';
+      margin-right: 0.5rem;
+    }
   }
 }
 
