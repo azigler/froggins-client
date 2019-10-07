@@ -73,7 +73,6 @@ export default {
 <style lang="scss">
 html {
   overscroll-behavior: none;
-  overflow: auto;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,6 +81,8 @@ html {
   background-color: #b0c1b0;
   line-height: 1.7;
   font-size: 1.1rem;
+  height: 100%;
+  overflow: hidden;
 
   body {
     margin: 0;
