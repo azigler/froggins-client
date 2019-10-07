@@ -81,12 +81,10 @@ html {
   background-color: #b0c1b0;
   line-height: 1.7;
   font-size: 1.1rem;
-  height: 100%;
   overflow: hidden;
 
   body {
     margin: 0;
-    overflow: hidden;
   }
 }
 
