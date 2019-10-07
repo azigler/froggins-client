@@ -7,23 +7,48 @@
       <RibbitSocket v-else />
     </div>
     <div class="client-handler" v-if="$store.state.server.online">
-      <FrogginsLayout v-if="$store.state.player.authenticated" />
-      <FrogginsAuth v-else />
+      <LayoutMobile
+        v-if="$store.state.player.authenticated && window.width < 768"
+      />
+      <LayoutDesktop
+        v-if="$store.state.player.authenticated && window.width >= 768"
+      />
+      <FrogginsAuth v-if="!$store.state.player.authenticated" />
     </div>
   </div>
 </template>
 
 <script>
 import RibbitSocket from './components/RibbitSocket.vue'
-import FrogginsLayout from './components/FrogginsLayout.vue'
+import LayoutDesktop from './components/LayoutDesktop.vue'
+import LayoutMobile from './components/LayoutMobile.vue'
 import FrogginsAuth from './components/FrogginsAuth.vue'
 
 export default {
   name: 'Client',
   components: {
     RibbitSocket,
-    FrogginsLayout,
+    LayoutDesktop,
+    LayoutMobile,
     FrogginsAuth
+  },
+  data() {
+    return {
+      window: {
+        width: 0,
+        height: 0
+      }
+    }
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  methods: {
+    handleResize() {
+      this.window.width = window.innerWidth
+      this.window.height = window.innerHeight
+    }
   },
   mounted() {
     this.$options.sockets.onmessage = msg => {

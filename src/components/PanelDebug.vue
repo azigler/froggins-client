@@ -60,10 +60,8 @@ export default {
 <style lang="scss">
 .panel.debug {
   background-color: #9ad89a;
-  border-radius: 1.2rem;
   border: 2px solid #495d49;
   padding: 1.5rem;
-  width: 80%;
   margin: 0 auto;
 }
 </style>

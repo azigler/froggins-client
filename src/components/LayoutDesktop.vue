@@ -1,5 +1,5 @@
 <template>
-  <div class="froggins-layout">
+  <div class="layout desktop">
     <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
       <div class="top">
         <h1>Froggins</h1>
@@ -52,9 +52,7 @@
               ❔
             </div>
           </div>
-          <component :is="panelTab" class="content">
-            ok
-          </component>
+          <component :is="panelTab" class="content" />
         </div>
         <div class="discord">
           <a href="https://discord.gg/QscwwBH">CHAT ON DISCORD</a>
@@ -80,13 +78,19 @@ import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
 
 export default {
-  name: 'FrogginsLayout',
+  name: 'LayoutDesktop',
   components: {
     PanelFroggins,
     PanelItems,
     PanelStructures,
     PanelWorld,
     PanelHelp
+  },
+  created() {
+    console.log('created desktop')
+  },
+  destroyed() {
+    console.log('destroyed desktop')
   },
   data() {
     return {
@@ -110,7 +114,7 @@ export default {
 </script>
 
 <style lang="scss">
-.froggins-layout {
+.layout.desktop {
   display: flex;
   overflow: hidden;
 
@@ -119,6 +123,7 @@ export default {
     flex-direction: column;
     height: 100vh;
     border-right: 2px solid #1d2f1d;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     &.hidden {
       margin-left: -11rem;
