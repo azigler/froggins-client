@@ -97,7 +97,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 90vh;
+  height: 80vh;
 
   > h1 {
     margin: 0 0.5rem;
