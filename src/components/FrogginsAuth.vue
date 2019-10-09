@@ -39,7 +39,7 @@
       <button @click="registerPlayer()">REGISTER</button>
       <span>{{ message }}</span>
     </div>
-    <button class="toggle-auth" @click="register = !register">
+    <button class="toggle-auth yellow" @click="register = !register">
       {{ this.register === true ? 'New? Click here' : 'Returning? Click here' }}
     </button>
   </div>
@@ -177,8 +177,9 @@ header {
     padding: 0 0.8rem;
     border: none;
     background-color: #d6ecd5;
-    border-bottom: 0.1rem solid green;
+
     border-radius: 0;
+    border-bottom: 0.1rem dashed green;
 
     &::placeholder {
       color: #8aa28a;
@@ -189,6 +190,7 @@ header {
       background-color: #bae8b9;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+      border-bottom: 0.1rem solid green;
     }
   }
 }
@@ -197,22 +199,5 @@ header {
   margin-top: 2.5rem;
   font-size: 1.1rem;
   width: 15rem;
-  background-color: #e0c400;
-  box-shadow: inset 0px -1px 1px 0px #b1a026;
-  border: 1px solid #867b3a;
-
-  &:hover {
-    background-color: #ffe219;
-  }
-
-  &:focus {
-    background-color: #e2c600;
-    box-shadow: inset #b1a026 1px 1px 1px;
-  }
-
-  &:active {
-    background-color: #e0cb32;
-    box-shadow: inset #b1a026 1px 1px 6px 3px;
-  }
 }
 </style>

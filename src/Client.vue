@@ -122,6 +122,26 @@ html {
         background-color: #589058;
         box-shadow: inset #467245 1px 1px 6px 3px;
       }
+
+      &.yellow {
+        background-color: #e0c400;
+        box-shadow: inset 0px -1px 1px 0px #b1a026;
+        border: 1px solid #867b3a;
+
+        &:hover {
+          background-color: #ffe219;
+        }
+
+        &:focus {
+          background-color: #e2c600;
+          box-shadow: inset #b1a026 1px 1px 1px;
+        }
+
+        &:active {
+          background-color: #e0cb32;
+          box-shadow: inset #b1a026 1px 1px 6px 3px;
+        }
+      }
     }
   }
 }
