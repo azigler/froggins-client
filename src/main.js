@@ -63,7 +63,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (store.state.player.authenticated) {
+  if (store.state.player.auth) {
     next()
   } else {
     router.push('/')

@@ -15,7 +15,7 @@ export default new Vuex.Store({
       online: false
     },
     player: {
-      authenticated: false,
+      auth: false,
       uuid: ''
     },
     debug: {
@@ -33,7 +33,7 @@ export default new Vuex.Store({
       if (state.socket.isConnected) {
         state.socket.isConnected = false
         state.server.online = false
-        state.player.authenticated = false
+        state.player.auth = false
         console.log('🔌❌ WebSocket disconnected!')
       }
     },

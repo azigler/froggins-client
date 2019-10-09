@@ -1,10 +1,10 @@
 <template>
-  <div id="ribbit-socket" />
+  <div class="froggins-websocket" />
 </template>
 
 <script>
 export default {
-  name: 'RibbitSocket',
+  name: 'FrogginsWebSocket',
   mounted() {
     this.$options.sockets.onmessage = msg => {
       let data = JSON.parse(msg.data)

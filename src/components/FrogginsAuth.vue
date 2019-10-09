@@ -4,7 +4,6 @@
       <h1 id="froggins">Froggins</h1>
     </header>
     <div class="login" v-show="!register">
-      <span>Log in</span>
       <input
         type="text"
         name="username"
@@ -20,13 +19,9 @@
         @keyup.enter="logInPlayer()"
       />
       <button @click="logInPlayer()">LOG IN</button>
-      <span class="message-box">{{ message }}</span>
-      <button class="toggle" @click="register = !register">
-        New? Click here
-      </button>
+      <span>{{ message }}</span>
     </div>
     <div class="register" v-show="register">
-      <span>Register</span>
       <input
         type="text"
         name="username"
@@ -42,11 +37,11 @@
         @keyup.enter="registerPlayer()"
       />
       <button @click="registerPlayer()">REGISTER</button>
-      <span class="message-box">{{ message }}</span>
-      <button class="toggle" @click="register = !register">
-        Returning? Click here
-      </button>
+      <span>{{ message }}</span>
     </div>
+    <button class="toggle-auth" @click="register = !register">
+      {{ this.register === true ? 'New? Click here' : 'Returning? Click here' }}
+    </button>
   </div>
 </template>
 
@@ -79,6 +74,7 @@ export default {
 
       if (usernameValidation === true && passwordValidation === true) {
         this.ribbitSend({
+          type: 'auth',
           id: 'login',
           username: this.username,
           password: this.password
@@ -105,6 +101,7 @@ export default {
 
       if (usernameValidation === true && passwordValidation === true) {
         this.ribbitSend({
+          type: 'auth',
           id: 'registration',
           username: this.username,
           password: this.password
@@ -123,7 +120,7 @@ export default {
         this.message = data.value
       } else {
         if (data.id === 'confirm-login' || data.id === 'confirm-registration') {
-          this.$store.commit('SET_PLAYER', { authenticated: true })
+          this.$store.commit('SET_PLAYER', { auth: true })
           this.$router.replace('/')
         }
       }
@@ -141,7 +138,7 @@ header {
   background-color: #d5ecd5;
   border-bottom: 2px solid #1d2f1d;
 
-  h1#froggins {
+  h1 {
     font-size: 2rem;
     margin: 0;
     user-select: none;
@@ -173,35 +170,48 @@ header {
     border-bottom: 2px solid #1c2f1c;
   }
 
-  .message-box {
-    height: 2rem;
-  }
+  input {
+    height: 3rem;
+    font-size: 2rem;
+    color: #1c301c;
+    padding: 0 0.8rem;
+    border: none;
+    background-color: #d6ecd5;
+    border-bottom: 0.1rem solid green;
+    border-radius: 0;
 
-  input,
-  button {
-    height: 2rem;
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-    border: 1px solid #1c2f1c;
-    border-radius: 0.2rem;
+    &::placeholder {
+      color: #8aa28a;
+    }
 
-    &.toggle {
-      margin-top: 1rem;
-      font-size: 1rem;
+    &:focus {
+      outline: none;
+      background-color: #bae8b9;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
     }
   }
+}
 
-  button {
-    border-radius: 0.5rem;
-    background-color: #68a268;
-    color: white;
-    font-weight: bold;
-    box-shadow: inset 0px -1px 1px 0px #0e3e0e;
+.toggle-auth {
+  margin-top: 2.5rem;
+  font-size: 1.1rem;
+  width: 15rem;
+  background-color: #e0c400;
+  box-shadow: inset 0px -1px 1px 0px #b1a026;
 
-    &:hover {
-      background-color: #2e632e;
-      cursor: pointer;
-    }
+  &:hover {
+    background-color: #ffe219;
+  }
+
+  &:focus {
+    background-color: #e2c600;
+    box-shadow: inset #b1a026 1px 1px 1px;
+  }
+
+  &:active {
+    background-color: #e0cb32;
+    box-shadow: inset #b1a026 1px 1px 6px 3px;
   }
 }
 </style>

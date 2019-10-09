@@ -1,25 +1,21 @@
 <template>
   <div id="client">
     <div class="server-handler">
-      <div class="froggins-offline" v-if="!$store.state.server.online">
-        You are disconnected from <span id="froggins">Froggins</span>. 🐸💔
+      <div class="message-box disconnected" v-if="!$store.state.server.online">
+        You are disconnected from Froggins. 🐸💔
       </div>
-      <RibbitSocket v-else />
+      <FrogginsWebSocket v-else />
     </div>
     <div class="client-handler" v-if="$store.state.server.online">
-      <LayoutMobile
-        v-if="$store.state.player.authenticated && window.width < 768"
-      />
-      <LayoutDesktop
-        v-if="$store.state.player.authenticated && window.width >= 768"
-      />
-      <FrogginsAuth v-if="!$store.state.player.authenticated" />
+      <LayoutMobile v-if="$store.state.player.auth && window.width < 768" />
+      <LayoutDesktop v-if="$store.state.player.auth && window.width >= 768" />
+      <FrogginsAuth v-if="!$store.state.player.auth" />
     </div>
   </div>
 </template>
 
 <script>
-import RibbitSocket from './components/RibbitSocket.vue'
+import FrogginsWebSocket from './components/FrogginsWebSocket.vue'
 import LayoutDesktop from './components/LayoutDesktop.vue'
 import LayoutMobile from './components/LayoutMobile.vue'
 import FrogginsAuth from './components/FrogginsAuth.vue'
@@ -27,7 +23,7 @@ import FrogginsAuth from './components/FrogginsAuth.vue'
 export default {
   name: 'Client',
   components: {
-    RibbitSocket,
+    FrogginsWebSocket,
     LayoutDesktop,
     LayoutMobile,
     FrogginsAuth
@@ -41,8 +37,8 @@ export default {
     }
   },
   created() {
-    window.addEventListener('resize', this.handleResize)
     this.handleResize()
+    window.addEventListener('resize', this.handleResize)
   },
   methods: {
     handleResize() {
@@ -54,8 +50,7 @@ export default {
     this.$options.sockets.onmessage = msg => {
       let data = JSON.parse(msg.data)
 
-      // Ribbit required to detect server status (most important)
-      if (!data.type) {
+      if (data.type === 'server-status') {
         switch (data.id) {
           case 'server.online': {
             return this.$store.commit('SET_SERVER', { online: data.value })
@@ -73,9 +68,9 @@ export default {
 <style lang="scss">
 html {
   overscroll-behavior: none;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
   color: #1e2f1e;
   background-color: #b0c1b0;
@@ -85,10 +80,53 @@ html {
 
   body {
     margin: 0;
+
+    input,
+    button {
+      height: 2rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      border: 1px solid #1c2f1c;
+    }
+
+    input {
+      border-radius: 0.2rem;
+
+      &:focus {
+        outline: none;
+        background-color: #bae8b9;
+      }
+    }
+
+    button {
+      border-radius: 0.5rem;
+      background-color: #68a268;
+      color: white;
+      font-weight: bold;
+      box-shadow: inset 0px -1px 1px 0px #0e3e0e;
+      text-shadow: 0px 1px 1px #1c301c;
+
+      &:hover {
+        background-color: #69cc69;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: #589058;
+        box-shadow: inset #467245 1px 1px 1px;
+      }
+
+      &:active {
+        outline: none;
+        background-color: #589058;
+        box-shadow: inset #467245 1px 1px 6px 3px;
+      }
+    }
   }
 }
 
-.froggins-offline {
+.message-box {
   background-color: #d7e6d7;
   border-radius: 0.4rem;
   width: 70%;
