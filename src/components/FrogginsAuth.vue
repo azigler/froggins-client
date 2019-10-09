@@ -199,6 +199,7 @@ header {
   width: 15rem;
   background-color: #e0c400;
   box-shadow: inset 0px -1px 1px 0px #b1a026;
+  border: 1px solid #867b3a;
 
   &:hover {
     background-color: #ffe219;
