@@ -150,7 +150,6 @@ header {
 
     &::after {
       content: '🐸';
-      margin-right: 0.5rem;
       position: absolute;
     }
   }
@@ -158,7 +157,7 @@ header {
 
 .login,
 .register {
-  margin: 8rem auto 0;
+  margin: 10vh auto 0;
   width: 20rem;
   display: flex;
   flex-direction: column;
@@ -179,12 +178,13 @@ header {
     padding: 0 0.8rem;
     border: none;
     background-color: #d6ecd5;
-
+    text-align: center;
     border-radius: 0;
     border-bottom: 0.1rem dashed green;
 
     &::placeholder {
       color: #8aa28a;
+      text-align: center;
     }
 
     &:focus {
@@ -204,6 +204,6 @@ header {
 .toggle-auth {
   margin-top: 2.5rem;
   font-size: 1.1rem;
-  width: 15rem;
+  width: 18rem;
 }
 </style>
