@@ -18,7 +18,7 @@
         placeholder="Password"
         @keyup.enter="logInPlayer()"
       />
-      <button @click="logInPlayer()">LOG IN</button>
+      <button @click="logInPlayer()">Log in</button>
       <span>{{ message }}</span>
     </div>
     <div class="register" v-show="register">
@@ -36,11 +36,13 @@
         placeholder="Password"
         @keyup.enter="registerPlayer()"
       />
-      <button @click="registerPlayer()">REGISTER</button>
+      <button @click="registerPlayer()">Register</button>
       <span>{{ message }}</span>
     </div>
     <button class="toggle-auth yellow" @click="register = !register">
-      {{ this.register === true ? 'New? Click here' : 'Returning? Click here' }}
+      {{
+        this.register === false ? 'New? Click here' : 'Returning? Click here'
+      }}
     </button>
   </div>
 </template>
@@ -135,13 +137,16 @@ export default {
 <style scoped lang="scss">
 header {
   margin-top: 0;
-  background-color: #d5ecd5;
-  border-bottom: 2px solid #1d2f1d;
+  background-color: #d7edd5;
+  border-bottom: 2px solid #c2d8c0;
+  -webkit-box-shadow: 0px 2px 20px 0px #59925a;
+  box-shadow: 0px 2px 20px 0px #657566;
 
   h1 {
     font-size: 2rem;
     margin: 0;
     user-select: none;
+    font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
     &::before {
       content: '🐸';
@@ -152,22 +157,18 @@ header {
 
 .login,
 .register {
-  margin: 15% auto 0;
-  width: 35%;
+  margin: 8rem auto 0;
+  width: 20rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   border-radius: 0.3rem;
   box-shadow: 0px 4px 20px 1px #425042;
   background-color: #d5ecd5;
-  border: 2px solid #1c2f1c;
+  border: 2px solid #91ab92;
 
   @media (max-width: 767px) {
-    width: initial;
-    border-radius: initial;
-    border: initial;
-    border-top: 2px solid #1c2f1c;
-    border-bottom: 2px solid #1c2f1c;
+    width: 15rem;
   }
 
   input {
@@ -192,6 +193,10 @@ header {
       border-top-right-radius: 5px;
       border-bottom: 0.1rem solid green;
     }
+  }
+
+  button {
+    text-transform: uppercase;
   }
 }
 
