@@ -148,9 +148,10 @@ header {
     user-select: none;
     font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
-    &::before {
+    &::after {
       content: '🐸';
       margin-right: 0.5rem;
+      position: absolute;
     }
   }
 }
