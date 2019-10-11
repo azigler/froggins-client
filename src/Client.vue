@@ -91,6 +91,7 @@ button {
   margin-bottom: 0.4rem;
   border: 1px solid #1c2f1c;
   font-family: Courier, monospace;
+  transition: 0.3s;
 }
 
 input {

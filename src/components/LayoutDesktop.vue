@@ -3,8 +3,12 @@
     <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
       <div class="top">
         <h1>Froggins</h1>
-        <div class="hamburger" @click="hideSidebar = !hideSidebar">
-          ☰
+        <div
+          class="toggle-hide"
+          @click="hideSidebar = !hideSidebar"
+          :class="`${hideSidebar ? 'hidden' : ''}`"
+        >
+          {{ `${!hideSidebar ? '◀️' : '▶️'}` }}
         </div>
       </div>
       <div class="map">Map or description of area</div>
@@ -126,7 +130,7 @@ export default {
     transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     &.hidden {
-      margin-left: -11rem;
+      margin-left: -9.5rem;
     }
 
     .top {
@@ -136,29 +140,22 @@ export default {
         margin: 0 0.5rem;
         text-align: left;
         user-select: none;
+        font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
-        &::before {
+        &:before {
           content: '🐸';
           margin-right: 0.5rem;
         }
       }
 
-      .hamburger {
+      .toggle-hide {
         margin: 0.55rem 0.5rem 0 0.25rem;
-        border: 2px solid #1c2f1c;
-        border-radius: 6px;
-        padding: 0rem 0.25rem 0.15rem;
-        line-height: 1.3;
-        height: fit-content;
-        background: #dadada;
-        box-shadow: 0px 8px 0px 0px #304030;
+        padding: 0.15rem 0.25rem;
+        transition: 0.3s;
 
-        &.open {
-          box-shadow: 0px -8px 0px 0px #304030;
-        }
-
-        &:hover {
-          background-color: #6a9a6a;
+        &:hover,
+        &.hidden {
+          text-shadow: 0px 0px 9px #254c71;
           cursor: pointer;
         }
       }

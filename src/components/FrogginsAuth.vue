@@ -148,7 +148,7 @@ header {
     user-select: none;
     font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
-    &::after {
+    &:after {
       content: '🐸';
       position: absolute;
     }
