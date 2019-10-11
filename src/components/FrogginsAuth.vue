@@ -1,6 +1,6 @@
 <template>
   <div class="froggins-auth">
-    <header>
+    <header class="froggins-header">
       <h1 id="froggins">Froggins</h1>
     </header>
     <div class="login" v-show="!register">
@@ -137,16 +137,10 @@ export default {
 <style scoped lang="scss">
 header {
   margin-top: 0;
-  background-color: #d7edd5;
-  border-bottom: 2px solid #c2d8c0;
-  -webkit-box-shadow: 0px 2px 20px 0px #59925a;
-  box-shadow: 0px 2px 20px 0px #657566;
 
   h1 {
     font-size: 2rem;
     margin: 0;
-    user-select: none;
-    font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
     &:after {
       content: '🐸';

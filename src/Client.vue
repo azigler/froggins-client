@@ -149,6 +149,11 @@ button {
   }
 }
 
+h1 {
+  user-select: none;
+  font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
+}
+
 .message-box {
   background-color: #d7e6d7;
   border-radius: 0.4rem;
@@ -157,5 +162,12 @@ button {
   padding: 2rem 0;
   border: 2px solid #1d2f1d;
   font-weight: bold;
+}
+
+.froggins-header {
+  background-color: #d7edd5;
+  border-bottom: 2px solid #c2d8c0;
+  -webkit-box-shadow: 0px 2px 20px 0px #59925a;
+  box-shadow: 0px 2px 20px 0px #657566;
 }
 </style>

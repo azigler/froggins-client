@@ -1,14 +1,14 @@
 <template>
   <div class="layout desktop">
     <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
-      <div class="top">
+      <div class="top froggins-header">
         <h1>Froggins</h1>
         <div
           class="toggle-hide"
           @click="hideSidebar = !hideSidebar"
           :class="`${hideSidebar ? 'hidden' : ''}`"
         >
-          {{ `${!hideSidebar ? '◀️' : '▶️'}` }}
+          ◀️
         </div>
       </div>
       <div class="map">Map or description of area</div>
@@ -136,15 +136,14 @@ export default {
     .top {
       justify-content: space-between;
       display: flex;
+      position: relative;
+
       > h1 {
         margin: 0 0.5rem;
         text-align: left;
-        user-select: none;
-        font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 
         &:before {
           content: '🐸';
-          margin-right: 0.5rem;
         }
       }
 
@@ -152,11 +151,20 @@ export default {
         margin: 0.55rem 0.5rem 0 0.25rem;
         padding: 0.15rem 0.25rem;
         transition: 0.3s;
+        position: absolute;
+        right: 0;
+        top: -3px;
 
         &:hover,
         &.hidden {
           text-shadow: 0px 0px 9px #254c71;
           cursor: pointer;
+        }
+
+        &.hidden {
+          transform: rotate(180deg);
+          right: 3px;
+          top: -4px;
         }
       }
     }
