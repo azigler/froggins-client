@@ -154,19 +154,17 @@ export default {
         right: 0;
         top: -6px;
         user-select: none;
+        text-align: center;
+        transition: 0.5s;
 
         &:hover,
         &.hidden {
-          text-shadow: 0px 0px 9px #254c71;
           cursor: pointer;
-          transform: rotate(180deg);
-          right: 3px;
-          top: -8px;
+          text-shadow: 0px 0px 9px #254c71;
         }
 
         &.hidden {
-          transform: rotate(180deg);
-          right: 3px;
+          transform: scale(-1, 1);
         }
       }
     }
