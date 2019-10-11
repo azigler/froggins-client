@@ -162,10 +162,10 @@ export default {
         &.hidden {
           cursor: pointer;
           text-shadow: 0px 0px 9px #254c71;
-          transform: scale(-1.1, 1);
         }
 
         &.hidden {
+          transform: scale(-1.1, 1);
         }
       }
     }
