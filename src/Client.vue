@@ -158,7 +158,8 @@ button {
     box-shadow: none;
     text-shadow: none;
     height: auto;
-    width: auto;
+    width: 2rem;
+    overflow: visible;
 
     &:hover {
       transform: rotate(15deg) scale(1, 1.2);
