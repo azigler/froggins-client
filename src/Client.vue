@@ -149,8 +149,6 @@ button {
   }
 
   &.ok {
-    position: absolute;
-    right: 1.2rem;
     padding: initial;
     border: none;
     font-size: 1.8rem;
