@@ -147,10 +147,29 @@ button {
       box-shadow: inset #b1a026 1px 1px 6px 3px;
     }
   }
+
+  &.ok {
+    position: absolute;
+    right: 1.2rem;
+    padding: initial;
+    border: none;
+    font-size: 1.8rem;
+    background: none;
+
+    &:hover {
+      transform: rotate(15deg) scale(1, 1.2);
+      background: none;
+    }
+  }
 }
 
 h1 {
   user-select: none;
+  font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
+}
+
+h3 {
+  font-weight: normal;
   font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 }
 
@@ -169,5 +188,50 @@ h1 {
   border-bottom: 2px solid #c2d8c0;
   -webkit-box-shadow: 0px 2px 20px 0px #59925a;
   box-shadow: 0px 2px 20px 0px #657566;
+}
+
+.mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-fade-wrapper {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    width: 100%;
+    height: 30%;
+  }
+}
+
+// TRANSITION STYLES
+.fade-leave-active {
+  opacity: 0;
+}
+
+.fade-enter .modal,
+.fade-leave-active .modal {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 </style>

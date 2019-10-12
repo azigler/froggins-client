@@ -127,7 +127,7 @@ export default {
     flex-direction: column;
     height: 100vh;
     border-right: 2px solid #1d2f1d;
-    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     &.hidden {
       margin-left: -9.5rem;

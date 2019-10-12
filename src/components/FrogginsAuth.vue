@@ -39,23 +39,41 @@
       <button @click="registerPlayer()">Register</button>
       <span>{{ message }}</span>
     </div>
-    <button class="toggle-auth yellow" @click="register = !register">
+    <button
+      class="toggle-auth yellow"
+      @click="
+        () => {
+          register = !register
+          if (register === true) showModal = true
+        }
+      "
+    >
       {{
         this.register === false ? 'New? Click here' : 'Returning? Click here'
       }}
     </button>
+    <!-- use the modal component, pass in the prop -->
+    <modal v-if="register && showModal" @close="showModal = false">
+      <h3 slot="header">custom header</h3>
+    </modal>
   </div>
 </template>
 
 <script>
+import Modal from './Modal.vue'
+
 export default {
   name: 'FrogginsAuth',
+  components: {
+    Modal
+  },
   data() {
     return {
       username: `${process.env.NODE_ENV === 'development' ? 'debug1' : ''}`,
       password: `${process.env.NODE_ENV === 'development' ? 'debug1' : ''}`,
       message: 'Welcome to Froggins!',
-      register: false
+      register: false,
+      showModal: false
     }
   },
   methods: {
