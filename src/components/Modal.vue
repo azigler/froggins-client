@@ -71,7 +71,6 @@
     align-content: center;
     border-top: 1px solid #5a778f;
     border-radius: 2px;
-    overflow: visible;
 
     h4 {
       margin: 0;

@@ -162,7 +162,7 @@ button {
     overflow: visible;
 
     &:hover {
-      transform: rotate(15deg) scale(1, 1.2);
+      transform: rotate(8deg) scale(1, 1.1);
       background: none;
     }
 
