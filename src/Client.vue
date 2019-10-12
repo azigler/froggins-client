@@ -160,6 +160,16 @@ button {
       transform: rotate(15deg) scale(1, 1.2);
       background: none;
     }
+
+    &:focus {
+      background: none;
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: none;
+      box-shadow: none;
+    }
   }
 }
 
