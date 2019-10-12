@@ -70,6 +70,7 @@
       position: absolute;
       left: 2rem;
       margin: 0;
+      margin-top: 0.2rem;
     }
 
     button.ok {
