@@ -65,12 +65,13 @@
   }
 
   footer {
-    height: 2.25rem;
+    height: 2rem;
     display: flex;
     justify-content: space-between;
     align-content: center;
     border-top: 1px solid #5a778f;
     border-radius: 2px;
+    overflow: visible;
 
     h4 {
       margin: 0;

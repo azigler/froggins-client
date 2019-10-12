@@ -155,10 +155,11 @@ button {
     background: none;
     box-shadow: none;
     text-shadow: none;
-    height: 2rem;
+    height: 2.75rem;
     width: 2rem;
     margin: initial;
     border-radius: 0;
+    overflow: visible;
 
     &:hover {
       transform: rotate(15deg) scale(1, 1.2);
