@@ -158,7 +158,6 @@ button {
     box-shadow: none;
     text-shadow: none;
     height: auto;
-    width: 2rem;
     overflow: visible;
 
     &:hover {

@@ -10,14 +10,17 @@
         <div class="text-fade-wrapper">
           <div class="body">
             <slot name="body">
-              default bodyefault bodyefault bodyefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodyefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodyefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodydefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodyefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodyefault bodyefault bodyefault
-              bodyefault bodyefault bodyefault bodyefault bodyefault bodyefault
-              body
+              Ut ultricies porta porttitor. Aenean quis leo eget risus placerat
+              consequat in in odio. Sed tempus finibus tristique. Quisque mollis
+              libero lectus, vel aliquam neque rhoncus eu. Suspendisse quis
+              massa et arcu consequat euismod ac ac justo. Duis eleifend dapibus
+              neque, ac tincidunt purus aliquam rhoncus. Sed vitae elit ut erat
+              aliquam rutrum at a eros. Suspendisse ullamcorper luctus magna. In
+              hac habitasse platea dictumst. Vestibulum gravida, tellus id
+              feugiat lobortis, orci sapien fringilla arcu, quis cursus sapien
+              lorem quis risus. Proin quis posuere quam. Duis vitae molestie ex,
+              nec pretium nunc. In hac habitasse platea dictumst. Cras efficitur
+              vulputate iaculis.
             </slot>
           </div>
         </div>
