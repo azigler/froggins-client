@@ -66,16 +66,16 @@
 
   footer {
     height: 2rem;
-    h4 {
-      position: absolute;
-      left: 2rem;
-      margin: 0;
-      margin-top: 0.2rem;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border-top: 1px solid #5a778f;
+    border-radius: 2px;
 
-    button.ok {
-      position: absolute;
-      right: 2rem;
+    h4 {
+      margin: 0;
+      color: #5a778f;
+      text-shadow: 0px 1px 1px #c9dae8;
     }
   }
 }
