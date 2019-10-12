@@ -155,7 +155,7 @@ button {
     background: none;
     box-shadow: none;
     text-shadow: none;
-    height: 2rem;
+    height: auto;
     width: 2rem;
     margin: initial;
 
