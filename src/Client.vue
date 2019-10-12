@@ -158,6 +158,7 @@ button {
     height: auto;
     width: 2rem;
     margin: initial;
+    border-radius: 0;
 
     &:hover {
       transform: rotate(15deg) scale(1, 1.2);
