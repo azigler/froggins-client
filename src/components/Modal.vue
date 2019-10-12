@@ -65,7 +65,7 @@
   }
 
   footer {
-    height: 2rem;
+    height: 2.25rem;
     display: flex;
     justify-content: space-between;
     align-content: center;
