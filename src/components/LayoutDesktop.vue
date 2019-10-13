@@ -16,10 +16,10 @@
         <img :src="locationImage" class="black" />
       </div>
       <div class="status-bar">
-        <span class="time"
-          >{{ timeOfDay === 'night' ? '🌙' : '☀️' }}
-          {{ timeOfDay.capitalize() }}</span
-        >
+        <span class="time">
+          {{ timeOfDay === 'night' ? '🌙' : '☀️' }}
+          {{ timeOfDay.capitalize() }}
+        </span>
         <span class="users"
           >👥 {{ $store.state.server.connectedPlayers.length }}</span
         >
@@ -130,7 +130,12 @@ export default {
       isMobile: false
     })
     window.addEventListener('keypress', e => {
-      if (e.key === '`') this.hideSidebar = !this.hideSidebar
+      if (
+        e.key === '`' &&
+        window.document.activeElement.tagName !== 'INPUT' &&
+        window.document.activeElement.tagName !== 'TEXTAREA'
+      )
+        this.hideSidebar = !this.hideSidebar
     })
   },
   destroyed() {
