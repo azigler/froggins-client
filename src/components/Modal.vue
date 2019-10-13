@@ -26,7 +26,10 @@
         </div>
         <footer>
           <slot name="footer">
-            <h4>Default modal footer</h4>
+            <span
+              >{{ $store.state.player.isMobile ? 'Tap' : 'Click' }} the 🆗 emoji
+              to continue.</span
+            >
           </slot>
           <button class="ok" @click="$emit('close')">
             🆗
@@ -55,13 +58,15 @@
       margin: 0 auto;
       color: #3e743f;
       text-shadow: 0px 1px 2px #cbd0cb;
+      user-select: none;
     }
   }
 
   .body {
     margin: 20px 0;
-    max-height: 10rem;
+    max-height: 30vh;
     overflow: auto;
+    padding-bottom: 2rem;
   }
 
   footer {
@@ -72,8 +77,9 @@
     border-top: 1px solid #5a778f;
     border-radius: 2px;
 
-    h4 {
+    span {
       margin: 0;
+      font-size: 0.9rem;
       color: #5a778f;
       text-shadow: 0px 1px 1px #c9dae8;
     }

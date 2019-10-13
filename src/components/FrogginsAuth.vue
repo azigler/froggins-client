@@ -52,9 +52,21 @@
         this.register === false ? 'New? Click here' : 'Returning? Click here'
       }}
     </button>
-    <!-- use the modal component, pass in the prop -->
-    <modal v-if="register && showModal" @close="showModal = false">
-      <h3 slot="header">custom header</h3>
+    <modal
+      id="registration-modal"
+      v-if="register && showModal"
+      @close="showModal = false"
+    >
+      <h3 slot="header">Welcome!</h3>
+      <div slot="body">
+        <div>
+          We're glad you're here. The Froggins of Frogginville need heroes like
+          you to protect them from the dangers of the swamplands. Choose a
+          username and password to register for immediate access to the newest
+          virtual pet adoption website on the internet.
+        </div>
+        <span>🐸💚</span>
+      </div>
     </modal>
   </div>
 </template>
@@ -217,5 +229,18 @@ header {
   margin-top: 2.5rem;
   font-size: 1.1rem;
   width: 18rem;
+}
+
+#registration-modal {
+  span {
+    font-size: 2.1rem;
+    animation: green-glow 1s infinite;
+    user-select: none;
+  }
+
+  h3:after {
+    content: '🏡';
+    position: absolute;
+  }
 }
 </style>

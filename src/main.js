@@ -42,10 +42,14 @@ Vue.mixin({
   }
 })
 
+const isLAN = window.location.hostname.includes('192.168.')
+  ? 'mud.andrewzigler.com'
+  : false
+
 Vue.use(
   VueNativeSock,
-  `ws${process.env.NODE_ENV === 'development' ? '' : 's'}://${
-    process.env.VUE_APP_WEBSOCKET_URL
+  `ws${process.env.NODE_ENV === 'development' && !isLAN ? '' : 's'}://${
+    isLAN ? isLAN : process.env.VUE_APP_WEBSOCKET_URL
   }:${process.env.VUE_APP_WEBSOCKET_PORT}`,
   {
     format: 'json',

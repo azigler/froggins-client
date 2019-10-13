@@ -16,6 +16,7 @@ export default new Vuex.Store({
     },
     player: {
       auth: false,
+      isMobile: false,
       uuid: ''
     },
     debug: {

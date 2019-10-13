@@ -39,6 +39,9 @@ export default {
   created() {
     this.handleResize()
     window.addEventListener('resize', this.handleResize)
+    this.$store.commit('SET_PLAYER', {
+      isMobile: this.window.width < 768 ? true : false
+    })
   },
   methods: {
     handleResize() {
@@ -85,7 +88,8 @@ html {
 }
 
 input,
-button {
+button,
+.button {
   height: 2rem;
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
@@ -103,7 +107,8 @@ input {
   }
 }
 
-button {
+button,
+.button {
   border-radius: 0.5rem;
   background-color: #68a268;
   color: white;
@@ -148,6 +153,26 @@ button {
     }
   }
 
+  &.purple {
+    background-color: #7289d9;
+    box-shadow: inset 0px -1px 1px 0px #4c5884;
+    border: 1px solid #343858;
+
+    &:hover {
+      background-color: #9fb2f5;
+    }
+
+    &:focus {
+      background-color: #69759e;
+      box-shadow: inset #3c4358 1px 1px 1px;
+    }
+
+    &:active {
+      background-color: #69759e;
+      box-shadow: inset #576184 1px 1px 6px 3px;
+    }
+  }
+
   &.ok {
     padding: initial;
     border: none;
@@ -159,7 +184,6 @@ button {
     width: 2rem;
     margin: initial;
     border-radius: 0;
-    overflow: visible;
 
     &:hover {
       transform: rotate(8deg) scale(1, 1.1);
@@ -225,7 +249,6 @@ h3 {
   &:after {
     content: '';
     position: absolute;
-    z-index: 1;
     bottom: 0;
     left: 0;
     pointer-events: none;
@@ -235,7 +258,7 @@ h3 {
       rgba(255, 255, 255, 0.8) 100%
     );
     width: 100%;
-    height: 30%;
+    height: 5rem;
   }
 }
 
@@ -248,5 +271,21 @@ h3 {
 .fade-leave-active .modal {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+// CSS ANIMATIONS
+@keyframes green-glow {
+  0% {
+    text-shadow: 0 0 0px #0f9e15;
+  }
+  40% {
+    text-shadow: 0 0 10px #2d502c;
+  }
+  60% {
+    text-shadow: 0 0 20px #3e743f;
+  }
+  100% {
+    text-shadow: 0 0 0 #d7f700;
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="layout desktop">
     <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
-      <div class="top froggins-header">
+      <header class="froggins-header">
         <h1>Froggins</h1>
         <div
           class="toggle-hide"
@@ -10,57 +10,67 @@
         >
           ◀️
         </div>
+      </header>
+      <div :class="`location ${timeOfDay}`">
+        <span class="name">{{ locationName }}</span>
+        <img :src="locationImage" class="black" />
       </div>
-      <div class="map">Map or description of area</div>
-      <div class="online-bar">
-        <span class="time">🕰️ {{ time }}</span>
+      <div class="status-bar">
+        <span class="time"
+          >{{ timeOfDay === 'night' ? '🌙' : '☀️' }}
+          {{ timeOfDay.capitalize() }}</span
+        >
         <span class="users"
           >👥 {{ $store.state.server.connectedPlayers.length }}</span
         >
       </div>
-      <div class="bottom">
-        <div class="panels">
-          <div class="tabs">
-            <div
-              @click="panelTab = 'PanelFroggins'"
-              :class="
-                `froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
-              "
-            >
-              🦎
-            </div>
-            <div
-              @click="panelTab = 'PanelItems'"
-              :class="`froggins ${panelTab === 'PanelItems' ? 'selected' : ''}`"
-            >
-              📦
-            </div>
-            <div
-              @click="panelTab = 'PanelStructures'"
-              :class="
-                `froggins ${panelTab === 'PanelStructures' ? 'selected' : ''}`
-              "
-            >
-              🏠
-            </div>
-            <div
-              @click="panelTab = 'PanelWorld'"
-              :class="`froggins ${panelTab === 'PanelWorld' ? 'selected' : ''}`"
-            >
-              🌐
-            </div>
-            <div
-              @click="panelTab = 'PanelHelp'"
-              :class="`froggins ${panelTab === 'PanelHelp' ? 'selected' : ''}`"
-            >
-              ❔
-            </div>
+      <div class="panel-container">
+        <div class="tabs">
+          <div
+            @click="panelTab = 'PanelFroggins'"
+            :class="
+              `tab froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
+            "
+          >
+            🦎
           </div>
-          <component :is="panelTab" class="content" />
+          <div
+            @click="panelTab = 'PanelItems'"
+            :class="`tab items ${panelTab === 'PanelItems' ? 'selected' : ''}`"
+          >
+            📦
+          </div>
+          <div
+            @click="panelTab = 'PanelStructures'"
+            :class="
+              `tab structures ${
+                panelTab === 'PanelStructures' ? 'selected' : ''
+              }`
+            "
+          >
+            🏠
+          </div>
+          <div
+            @click="panelTab = 'PanelWorld'"
+            :class="`tab world ${panelTab === 'PanelWorld' ? 'selected' : ''}`"
+          >
+            🌐
+          </div>
+          <div
+            @click="panelTab = 'PanelHelp'"
+            :class="`tab help ${panelTab === 'PanelHelp' ? 'selected' : ''}`"
+          >
+            ❔
+          </div>
         </div>
-        <div class="discord">
-          <a href="https://discord.gg/QscwwBH">CHAT ON DISCORD</a>
-        </div>
+        <component :is="panelTab" class="content" />
+      </div>
+      <div class="discord">
+        <a
+          class="purple button"
+          target="_blank"
+          href="https://discord.gg/QscwwBH"
+        />
       </div>
     </aside>
     <div id="main">
@@ -90,8 +100,38 @@ export default {
     PanelWorld,
     PanelHelp
   },
+  watch: {
+    time(newTime, oldTime) {
+      if (oldTime === '' || newTime.hours() !== oldTime.hours()) {
+        if (newTime.hours() >= 5 || newTime.hours() < 7) {
+          this.timeOfDay = 'dawn'
+        }
+        if (newTime.hours() >= 7 && newTime.hours() < 12) {
+          this.timeOfDay = 'morning'
+        }
+        if (newTime.hours() >= 11 && newTime.hours() < 13) {
+          this.timeOfDay = 'noon'
+        }
+        if (newTime.hours() >= 13 && newTime.hours() < 17) {
+          this.timeOfDay = 'afternoon'
+        }
+        if (newTime.hours() >= 17 && newTime.hours() < 19) {
+          this.timeOfDay = 'dusk'
+        }
+        if (newTime.hours() >= 19 || newTime.hours() < 6) {
+          this.timeOfDay = 'night'
+        }
+      }
+    }
+  },
   created() {
     console.log('created desktop')
+    this.$store.commit('SET_PLAYER', {
+      isMobile: false
+    })
+    window.addEventListener('keypress', e => {
+      if (e.key === '`') this.hideSidebar = !this.hideSidebar
+    })
   },
   destroyed() {
     console.log('destroyed desktop')
@@ -100,18 +140,20 @@ export default {
     return {
       navShow: true,
       hideSidebar: false,
+      locationImage: '/assets/location-swamp.png',
       time: '',
-      panelTab: 'PanelFroggins'
+      panelTab: 'PanelFroggins',
+      timeOfDay: 'start',
+      locationName: 'in a spooky swamp...'
     }
   },
   mounted() {
     this.updateDateTime()
   },
   methods: {
-    updateDateTime: function updateDateTime() {
-      this.time = moment().format('hh:mm:ss A')
-
-      setTimeout(this.updateDateTime, 1000)
+    updateDateTime() {
+      this.time = moment()
+      setTimeout(this.updateDateTime, 1000 * 60)
     }
   }
 }
@@ -126,15 +168,18 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 12rem;
     border-right: 2px solid #1d2f1d;
     transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #b4cbba;
 
     &.hidden {
       margin-left: -9.5rem;
     }
 
-    .top {
+    header {
       position: relative;
+      min-height: 2.6rem;
 
       > h1 {
         margin: 0 0.5rem;
@@ -142,6 +187,7 @@ export default {
 
         &:before {
           content: '🐸';
+          margin-right: 0.75rem;
         }
       }
 
@@ -170,20 +216,76 @@ export default {
       }
     }
 
-    .map {
+    .location {
       border: 2px solid #1c2f1c;
       margin: 0.2rem;
       border-radius: 5px;
-      height: 20%;
-      justify-content: center;
-      display: flex;
-      align-items: center;
       margin-bottom: 0;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
+      user-select: none;
+      position: relative;
+      height: 11.364rem;
+
+      &.dawn,
+      &.morning,
+      &.noon,
+      &.afternoon,
+      &.dusk {
+        .name {
+          background-color: rgba(215, 236, 213, 0.8);
+          color: #1c2f1c;
+        }
+      }
+
+      &.dawn img {
+        filter: saturate(0.8) brightness(0.8);
+      }
+
+      &.noon img {
+        filter: saturate(1) brightness(1.2);
+      }
+
+      &.dusk img {
+        filter: saturate(2) brightness(0.8);
+      }
+
+      &.night img {
+        filter: saturate(0.5) brightness(0.3);
+      }
+
+      &.start img {
+        &.black {
+          filter: saturate(1) brightness(0);
+        }
+      }
+
+      .name {
+        transition: all 10s ease-out;
+      }
+
+      img {
+        transition: filter 10s ease-out;
+
+        &.black.start {
+          filter: brightness(0);
+        }
+      }
+
+      .name {
+        width: 100%;
+        height: 1.2rem;
+        border-bottom: dotted #1b2f1b 1px;
+        line-height: 1.1;
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        color: #b1c9db;
+        background-color: rgba(215, 236, 213, 0.3);
+      }
     }
 
-    .online-bar {
+    .status-bar {
       border: 2px solid #1c2f1c;
       margin: 0.2rem;
       margin-top: 0;
@@ -195,59 +297,74 @@ export default {
       display: flex;
       justify-content: space-between;
       padding: 0 0.5rem;
+      user-select: none;
+      min-height: 1.7rem;
 
       .users {
         font-weight: bold;
       }
     }
 
-    .bottom {
+    .panel-container {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
-      height: inherit;
+      height: 57%;
+    }
 
-      .panels {
-        height: 90%;
-      }
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      border: 2px solid #1c2f1c;
+      margin: 0 0.2rem;
+      border-radius: 5px;
+      background-color: #1c2f1c;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      min-height: 1.8rem;
 
-      .tabs {
-        display: flex;
-        justify-content: center;
-        border: 2px solid #1c2f1c;
-        margin: 0 0.2rem;
+      .tab {
         border-radius: 5px;
-        background-color: gray;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        padding: 0 0.4rem 0 0.5rem;
+        background-color: #cccc7d;
 
-        div {
-          border-right: 2px solid #1c2f1c;
-          padding: 0 0.4rem 0 0.5rem;
-          background-color: #cccc7d;
-
-          &:hover,
-          &.selected {
-            background-color: red;
-            cursor: pointer;
-          }
-
-          &:first-child {
-            border-left: 2px solid #1c2f1c;
-          }
+        &:hover,
+        &.selected {
+          background-color: red;
+          cursor: pointer;
         }
       }
+    }
 
-      .panel {
-        background-color: #9ad89a;
-        border: 2px solid #495d49;
-        padding: 0.5rem;
+    .panel {
+      background-color: #9ad89a;
+      border: 2px solid #495d49;
+      padding: 0.5rem;
+      margin: 0 0.2rem;
+      border-top: none;
+      height: 100%;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .discord {
+      height: 3.2rem;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      a {
+        height: 75%;
+        max-height: 2rem;
+        width: 100%;
+        border-radius: 0.4rem;
         margin: 0 0.2rem;
-        border-top: none;
-        height: inherit;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-image: url('https://discordapp.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg');
       }
     }
   }
+
   nav {
     padding: 0rem 2rem;
     background-color: #f5f556;
