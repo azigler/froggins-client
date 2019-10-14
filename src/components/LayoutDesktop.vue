@@ -32,7 +32,7 @@
               `tab froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
             "
           >
-          🦎
+            🦎
           </div>
           <div
             @click="panelTab = 'PanelItems'"
@@ -64,20 +64,20 @@
           </div>
         </div>
         <component :is="panelTab" class="content" />
+        <div class="discord">
+          <a
+            class="purple button"
+            target="_blank"
+            href="https://discord.gg/QscwwBH"
+          />
+        </div>
+        <span class="copyright">
+          © 2019
+          <a target="_blank" href="https://www.andrewzigler.com/">
+            Andrew Zigler
+          </a>
+        </span>
       </div>
-      <div class="discord">
-        <a
-          class="purple button"
-          target="_blank"
-          href="https://discord.gg/QscwwBH"
-        />
-      </div>
-      <span class="copyright">
-        © 2019
-        <a target="_blank" href="https://www.andrewzigler.com/"
-          >Andrew Zigler</a
-        >
-      </span>
     </aside>
     <div id="main">
       <nav v-if="navShow">
@@ -318,7 +318,8 @@ export default {
     .panel-container {
       display: flex;
       flex-direction: column;
-      height: 90%;
+      height: 100%;
+      margin-bottom: 8vh;
     }
 
     .tabs {

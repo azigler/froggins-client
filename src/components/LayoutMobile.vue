@@ -163,6 +163,7 @@ export default {
     justify-content: space-around;
     height: 5%;
     min-height: 1.5rem;
+    align-items: center;
 
     h1 {
       margin: 0;
@@ -181,7 +182,7 @@ export default {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     height: 5%;
-    min-height: 1.5rem;
+    min-height: 2rem;
 
     div {
       border-right: 2px solid #1c2f1c;
@@ -191,6 +192,7 @@ export default {
       align-self: center;
       line-height: 2;
       height: 100%;
+      align-items: center;
 
       &:hover,
       &.selected {
@@ -217,7 +219,7 @@ export default {
     left: 2vw;
     height: 11.364rem;
     transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    margin: -8.5rem 1.25rem;
+    margin: -6rem 1.25rem;
     z-index: 2;
 
     &:hover {
@@ -354,7 +356,6 @@ export default {
   footer {
     display: flex;
     flex-direction: column;
-    height: 10%;
     align-items: center;
     align-self: flex-end;
 
@@ -375,6 +376,7 @@ export default {
       color: #414a73;
       text-shadow: #7289d8 0px 0px 13px;
       z-index: 1;
+      margin-top: -0.3rem;
     }
 
     .discord {
