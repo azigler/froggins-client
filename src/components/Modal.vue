@@ -26,10 +26,10 @@
         </div>
         <footer>
           <slot name="footer">
-            <span
-              >{{ $store.state.player.isMobile ? 'Tap' : 'Click' }} the 🆗 emoji
-              to continue.</span
-            >
+            <span class="continue">
+              {{ $store.state.player.isMobile ? 'Tap' : 'Click' }} the 🆗 emoji
+              to continue.
+            </span>
           </slot>
           <button class="ok" @click="$emit('close')">
             🆗

@@ -81,9 +81,25 @@ html {
   line-height: 1.7;
   font-size: 1.1rem;
   overflow: hidden;
+  animation: bg-slide 22s linear infinite;
 
   body {
     margin: 0;
+  }
+}
+
+.client-handler main:not(.froggins-auth) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@keyframes bg-slide {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: top;
   }
 }
 
@@ -115,6 +131,8 @@ button,
   font-weight: bold;
   box-shadow: inset 0px -1px 1px 0px #0e3e0e;
   text-shadow: 0px 1px 1px #1c301c;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     background-color: #69cc69;
@@ -258,7 +276,7 @@ h3 {
       rgba(255, 255, 255, 0.8) 100%
     );
     width: 100%;
-    height: 5rem;
+    height: 1rem;
   }
 }
 

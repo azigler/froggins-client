@@ -1,5 +1,5 @@
 <template>
-  <div class="froggins-auth">
+  <main class="froggins-auth">
     <header class="froggins-header">
       <h1 id="froggins">Froggins</h1>
     </header>
@@ -39,15 +39,7 @@
       <button @click="registerPlayer()">Register</button>
       <span>{{ message }}</span>
     </div>
-    <button
-      class="toggle-auth yellow"
-      @click="
-        () => {
-          register = !register
-          if (register === true) showModal = true
-        }
-      "
-    >
+    <button class="toggle-auth yellow" @click="toggleAuth()">
       {{
         this.register === false ? 'New? Click here' : 'Returning? Click here'
       }}
@@ -68,7 +60,7 @@
         <span>🐸💚</span>
       </div>
     </modal>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -142,6 +134,10 @@ export default {
         this.message =
           usernameValidation !== true ? usernameValidation : passwordValidation
       }
+    },
+    toggleAuth() {
+      this.register = !this.register
+      if (this.register === true) this.showModal = true
     }
   },
   mounted() {
@@ -164,83 +160,85 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-header {
-  margin-top: 0;
+<style lang="scss">
+.froggins-auth {
+  header {
+    margin-top: 0;
 
-  h1 {
-    font-size: 2rem;
-    margin: 0;
+    h1 {
+      font-size: 2rem;
+      margin: 0;
 
-    &:after {
-      content: '🐸';
+      &:after {
+        content: '🐸';
+        position: absolute;
+      }
+    }
+  }
+
+  .login,
+  .register {
+    margin: 10vh auto 0;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    box-shadow: 0px 4px 20px 1px #425042;
+    background-color: #d5ecd5;
+    border: 2px solid #91ab92;
+
+    @media (max-width: 767px) {
+      width: 15rem;
+    }
+
+    input {
+      height: 3rem;
+      font-size: 2rem;
+      color: #1c301c;
+      padding: 0 0.8rem;
+      border: none;
+      background-color: #d6ecd5;
+      text-align: center;
+      border-radius: 0;
+      border-bottom: 0.1rem dashed green;
+
+      &::placeholder {
+        color: #8aa28a;
+        text-align: center;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: #bae8b9;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 0.1rem solid green;
+      }
+    }
+
+    button {
+      text-transform: uppercase;
+    }
+  }
+
+  .toggle-auth {
+    margin-top: 2.5rem;
+    font-size: 1.1rem;
+    width: 18rem;
+  }
+
+  #registration-modal {
+    span:not(.continue) {
+      font-size: 2.1rem;
+      animation: green-glow 1s infinite;
+      user-select: none;
+    }
+
+    h3:after {
+      content: '🏡';
       position: absolute;
     }
-  }
-}
-
-.login,
-.register {
-  margin: 10vh auto 0;
-  width: 20rem;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-radius: 0.3rem;
-  box-shadow: 0px 4px 20px 1px #425042;
-  background-color: #d5ecd5;
-  border: 2px solid #91ab92;
-
-  @media (max-width: 767px) {
-    width: 15rem;
-  }
-
-  input {
-    height: 3rem;
-    font-size: 2rem;
-    color: #1c301c;
-    padding: 0 0.8rem;
-    border: none;
-    background-color: #d6ecd5;
-    text-align: center;
-    border-radius: 0;
-    border-bottom: 0.1rem dashed green;
-
-    &::placeholder {
-      color: #8aa28a;
-      text-align: center;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: #bae8b9;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom: 0.1rem solid green;
-    }
-  }
-
-  button {
-    text-transform: uppercase;
-  }
-}
-
-.toggle-auth {
-  margin-top: 2.5rem;
-  font-size: 1.1rem;
-  width: 18rem;
-}
-
-#registration-modal {
-  span {
-    font-size: 2.1rem;
-    animation: green-glow 1s infinite;
-    user-select: none;
-  }
-
-  h3:after {
-    content: '🏡';
-    position: absolute;
   }
 }
 </style>
