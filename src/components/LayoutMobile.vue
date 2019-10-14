@@ -66,12 +66,12 @@
           href="https://discord.gg/QscwwBH"
         />
       </div>
-      <span class="copyright"
-        >© 2019
-        <a target="_blank" href="https://www.andrewzigler.com/"
-          >Andrew Zigler</a
-        ></span
-      >
+      <span class="copyright">
+        © 2019
+        <a target="_blank" href="https://www.andrewzigler.com/">
+          Andrew Zigler
+        </a>
+      </span>
     </footer>
   </main>
 </template>
@@ -160,7 +160,7 @@ export default {
 
   header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 5%;
     min-height: 1.5rem;
 
@@ -218,7 +218,7 @@ export default {
     height: 11.364rem;
     transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     margin: -8.5rem 1.25rem;
-    z-index: 1;
+    z-index: 2;
 
     &:hover {
       opacity: 1;
@@ -305,7 +305,7 @@ export default {
     padding: 0rem 2rem;
     background-color: #f5f556;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     border-bottom: 2px solid #1d2f1d;
     margin: 0 0.2rem;
     border: 2px solid #1c311c;

@@ -57,7 +57,7 @@
           username and password to register for immediate access to the newest
           virtual pet adoption website on the internet.
         </div>
-        <span>🐸💚</span>
+        <span class="pulsing">🐸💚</span>
       </div>
     </modal>
   </main>
@@ -229,7 +229,7 @@ export default {
   }
 
   #registration-modal {
-    span:not(.continue) {
+    span.pulsing {
       font-size: 2.1rem;
       animation: green-glow 1s infinite;
       user-select: none;

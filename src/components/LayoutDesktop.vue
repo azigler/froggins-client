@@ -32,7 +32,7 @@
               `tab froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
             "
           >
-            🦎
+          🦎
           </div>
           <div
             @click="panelTab = 'PanelItems'"
@@ -72,12 +72,12 @@
           href="https://discord.gg/QscwwBH"
         />
       </div>
-      <span class="copyright"
-        >© 2019
+      <span class="copyright">
+        © 2019
         <a target="_blank" href="https://www.andrewzigler.com/"
           >Andrew Zigler</a
-        ></span
-      >
+        >
+      </span>
     </aside>
     <div id="main">
       <nav v-if="navShow">
@@ -197,6 +197,7 @@ export default {
       > h1 {
         margin: 0 0.5rem;
         text-align: left;
+        font-size: 1.5rem;
 
         &:before {
           content: '🐸';
@@ -209,7 +210,7 @@ export default {
         padding: 0.15rem 0.25rem;
         transition: 0.3s;
         position: absolute;
-        right: 0;
+        right: -6px;
         top: -6px;
         user-select: none;
         text-align: center;
@@ -317,7 +318,7 @@ export default {
     .panel-container {
       display: flex;
       flex-direction: column;
-      height: 57%;
+      height: 90%;
     }
 
     .tabs {
@@ -360,6 +361,7 @@ export default {
       align-items: center;
       display: flex;
       justify-content: center;
+      min-height: 5%;
 
       a {
         height: 75%;
@@ -379,7 +381,7 @@ export default {
     padding: 0rem 2rem;
     background-color: #f5f556;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     border-bottom: 2px solid #1d2f1d;
 
     a {

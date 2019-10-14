@@ -199,6 +199,7 @@ button,
     box-shadow: none;
     text-shadow: none;
     height: 2.75rem;
+    overflow: visible;
     width: 2rem;
     margin: initial;
     border-radius: 0;

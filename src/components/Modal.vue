@@ -26,7 +26,7 @@
         </div>
         <footer>
           <slot name="footer">
-            <span class="continue">
+            <span>
               {{ $store.state.player.isMobile ? 'Tap' : 'Click' }} the 🆗 emoji
               to continue.
             </span>
