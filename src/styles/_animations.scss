@@ -1,0 +1,23 @@
+@keyframes glow-green {
+  0% {
+    text-shadow: 0 0 0px #0f9e15;
+  }
+  40% {
+    text-shadow: 0 0 10px #2d502c;
+  }
+  60% {
+    text-shadow: 0 0 20px #3e743f;
+  }
+  100% {
+    text-shadow: 0 0 0 #d7f700;
+  }
+}
+
+@keyframes background-to-top {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: top;
+  }
+}

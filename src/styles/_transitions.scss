@@ -1,0 +1,9 @@
+.fade-leave-active {
+  opacity: 0;
+}
+
+.fade-enter .modal,
+.fade-leave-active .modal {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}

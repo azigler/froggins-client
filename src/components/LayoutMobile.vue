@@ -127,7 +127,7 @@ export default {
     return {
       navShow: true,
       hideSidebar: false,
-      locationImage: '/assets/location-swamp.png',
+      locationImage: 'assets/img/location-swamp.png',
       time: '',
       panelTab: 'play',
       timeOfDay: 'start',
@@ -150,6 +150,7 @@ export default {
 .layout.mobile {
   display: flex;
   flex-direction: column;
+  text-align: center;
   height: 80vh;
   position: relative;
   background-color: #b0c1b0;

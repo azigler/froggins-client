@@ -73,182 +73,15 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  overscroll-behavior: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'Patrick Hand', Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: #1e2f1e;
-  background-color: #b0c1b0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' width='80' height='40'%3E%3Cpath fill='%23bdddcc' fill-opacity='0.4' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E");
-  line-height: 1.7;
-  font-size: 1.1rem;
-  overflow: hidden;
-  animation: bg-slide 22s linear infinite;
+@import '@/styles/froggins.scss';
 
-  body {
-    margin: 0;
-  }
-}
-
-.client-handler main:not(.froggins-auth) {
+.client-handler main.layout {
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-@keyframes bg-slide {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: top;
-  }
-}
-
-input,
-button,
-.button {
-  height: 2rem;
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-  border: 1px solid #1c2f1c;
-  font-family: Courier, monospace;
-  transition: 0.3s;
-}
-
-input {
-  border-radius: 0.2rem;
-
-  &.green {
-    color: #1c301c;
-    border: none;
-    background-color: #d6ecd5;
-    border-bottom: 0.1rem dashed green;
-
-    &::placeholder {
-      color: #8aa28a;
-    }
-
-    &:focus {
-      background-color: #bae8b9;
-      border-bottom: 0.1rem solid green;
-    }
-  }
-}
-
-button,
-.button {
-  border-radius: 0.5rem;
-  background-color: #68a268;
-  color: white;
-  font-weight: bold;
-  box-shadow: inset 0px -1px 1px 0px #0e3e0e;
-  text-shadow: 0px 1px 1px #1c301c;
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    background-color: #69cc69;
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
-    background-color: #589058;
-    box-shadow: inset #467245 1px 1px 1px;
-  }
-
-  &:active {
-    outline: none;
-    background-color: #589058;
-    box-shadow: inset #467245 1px 1px 6px 3px;
-  }
-
-  &.yellow {
-    background-color: #e0c400;
-    box-shadow: inset 0px -1px 1px 0px #b1a026;
-    border: 1px solid #867b3a;
-
-    &:hover {
-      background-color: #ffe219;
-    }
-
-    &:focus {
-      background-color: #e2c600;
-      box-shadow: inset #b1a026 1px 1px 1px;
-    }
-
-    &:active {
-      background-color: #e0cb32;
-      box-shadow: inset #b1a026 1px 1px 6px 3px;
-    }
-  }
-
-  &.purple {
-    background-color: #7289d9;
-    box-shadow: inset 0px -1px 1px 0px #4c5884;
-    border: 1px solid #343858;
-
-    &:hover {
-      background-color: #9fb2f5;
-    }
-
-    &:focus {
-      background-color: #69759e;
-      box-shadow: inset #3c4358 1px 1px 1px;
-    }
-
-    &:active {
-      background-color: #69759e;
-      box-shadow: inset #576184 1px 1px 6px 3px;
-    }
-  }
-
-  &.ok {
-    padding: initial;
-    border: none;
-    font-size: 1.8rem;
-    background: none;
-    box-shadow: none;
-    text-shadow: none;
-    height: 2.75rem;
-    overflow: visible;
-    width: 2rem;
-    margin: initial;
-    border-radius: 0;
-
-    &:hover {
-      transform: rotate(8deg) scale(1, 1.1);
-      background: none;
-    }
-
-    &:focus {
-      background: none;
-      box-shadow: none;
-    }
-
-    &:active {
-      background-color: none;
-      box-shadow: none;
-    }
-  }
-}
-
-h1 {
-  user-select: none;
-  font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
-  font-size: 2rem;
-  margin: 0;
-}
-
-h3 {
-  font-weight: normal;
-  font-size: 1.17rem;
-  font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
-}
-
+// HOIST
 .message-box {
   background-color: #d7e6d7;
   border-radius: 0.4rem;
@@ -257,8 +90,10 @@ h3 {
   padding: 2rem 0;
   border: 2px solid #1d2f1d;
   font-weight: bold;
+  text-align: center;
 }
 
+// HOIST
 .froggins-header {
   background-color: #d7edd5;
   border-bottom: 2px solid #c2d8c0;
@@ -266,6 +101,7 @@ h3 {
   box-shadow: 0px 2px 20px 0px #657566;
 }
 
+// HOIST
 .mask {
   position: fixed;
   z-index: 9998;
@@ -280,6 +116,7 @@ h3 {
   align-items: center;
 }
 
+// HOIST
 .text-fade-wrapper {
   position: relative;
 
@@ -296,33 +133,6 @@ h3 {
     );
     width: 100%;
     height: 1rem;
-  }
-}
-
-// TRANSITION STYLES
-.fade-leave-active {
-  opacity: 0;
-}
-
-.fade-enter .modal,
-.fade-leave-active .modal {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-// CSS ANIMATIONS
-@keyframes green-glow {
-  0% {
-    text-shadow: 0 0 0px #0f9e15;
-  }
-  40% {
-    text-shadow: 0 0 10px #2d502c;
-  }
-  60% {
-    text-shadow: 0 0 20px #3e743f;
-  }
-  100% {
-    text-shadow: 0 0 0 #d7f700;
   }
 }
 </style>

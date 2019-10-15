@@ -166,6 +166,8 @@ export default {
 
 <style lang="scss">
 .froggins-auth {
+  text-align: center;
+
   header {
     h1 {
       &:after {
@@ -219,7 +221,7 @@ export default {
   #registration .modal {
     span.pulsing {
       font-size: 2.1rem;
-      animation: green-glow 1s infinite;
+      animation: glow-green 1s infinite;
       user-select: none;
     }
 
