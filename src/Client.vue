@@ -7,8 +7,12 @@
       <FrogginsWebSocket v-else />
     </div>
     <div class="client-handler" v-if="$store.state.server.online">
-      <LayoutMobile v-if="$store.state.player.auth && window.width < 768" />
-      <LayoutDesktop v-if="$store.state.player.auth && window.width >= 768" />
+      <LayoutMobile
+        v-if="$store.state.player.auth && $store.state.player.isMobile"
+      />
+      <LayoutDesktop
+        v-if="$store.state.player.auth && !$store.state.player.isMobile"
+      />
       <FrogginsAuth v-if="!$store.state.player.auth" />
     </div>
   </div>
@@ -39,14 +43,14 @@ export default {
   created() {
     this.handleResize()
     window.addEventListener('resize', this.handleResize)
-    this.$store.commit('SET_PLAYER', {
-      isMobile: this.window.width < 768 ? true : false
-    })
   },
   methods: {
     handleResize() {
       this.window.width = window.innerWidth
       this.window.height = window.innerHeight
+      this.$store.commit('SET_PLAYER', {
+        isMobile: this.window.width < 768 ? true : false
+      })
     }
   },
   mounted() {
@@ -117,9 +121,20 @@ button,
 input {
   border-radius: 0.2rem;
 
-  &:focus {
-    outline: none;
-    background-color: #bae8b9;
+  &.green {
+    color: #1c301c;
+    border: none;
+    background-color: #d6ecd5;
+    border-bottom: 0.1rem dashed green;
+
+    &::placeholder {
+      color: #8aa28a;
+    }
+
+    &:focus {
+      background-color: #bae8b9;
+      border-bottom: 0.1rem solid green;
+    }
   }
 }
 
@@ -224,10 +239,13 @@ button,
 h1 {
   user-select: none;
   font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  margin: 0;
 }
 
 h3 {
   font-weight: normal;
+  font-size: 1.17rem;
   font-family: 'Fredoka One', Helvetica, Arial, sans-serif;
 }
 

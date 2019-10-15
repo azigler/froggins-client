@@ -119,9 +119,6 @@ export default {
   },
   created() {
     console.log('created mobile')
-    this.$store.commit('SET_PLAYER', {
-      isMobile: true
-    })
   },
   destroyed() {
     console.log('destroyed mobile')

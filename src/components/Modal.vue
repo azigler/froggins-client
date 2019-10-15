@@ -4,7 +4,7 @@
       <div class="modal">
         <header>
           <slot name="header">
-            <h3>Default modal header</h3>
+            <h2>Default modal header</h2>
           </slot>
         </header>
         <div class="text-fade-wrapper">
@@ -54,7 +54,7 @@
   header {
     border-bottom: 2px dashed #3e743f;
 
-    h3 {
+    > h2 {
       margin: 0 auto;
       color: #3e743f;
       text-shadow: 0px 1px 2px #cbd0cb;
@@ -77,7 +77,7 @@
     border-top: 1px solid #5a778f;
     border-radius: 2px;
 
-    span {
+    > span {
       margin: 0;
       font-size: 0.9rem;
       color: #5a778f;

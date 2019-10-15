@@ -7,6 +7,7 @@
       <input
         type="text"
         name="username"
+        class="green"
         v-model="username"
         placeholder="Username"
         @keyup.enter="logInPlayer()"
@@ -14,6 +15,7 @@
       <input
         type="password"
         name="password"
+        class="green"
         v-model="password"
         placeholder="Password"
         @keyup.enter="logInPlayer()"
@@ -25,6 +27,7 @@
       <input
         type="text"
         name="username"
+        class="green"
         v-model="username"
         placeholder="Username"
         @keyup.enter="registerPlayer()"
@@ -32,6 +35,7 @@
       <input
         type="password"
         name="password"
+        class="green"
         v-model="password"
         placeholder="Password"
         @keyup.enter="registerPlayer()"
@@ -45,11 +49,11 @@
       }}
     </button>
     <modal
-      id="registration-modal"
+      id="registration"
       v-if="register && showModal"
       @close="showModal = false"
     >
-      <h3 slot="header">Welcome!</h3>
+      <h2 slot="header">Welcome!</h2>
       <div slot="body">
         <div>
           We're glad you're here. The Froggins of Frogginville need heroes like
@@ -163,12 +167,7 @@ export default {
 <style lang="scss">
 .froggins-auth {
   header {
-    margin-top: 0;
-
     h1 {
-      font-size: 2rem;
-      margin: 0;
-
       &:after {
         content: '🐸';
         position: absolute;
@@ -195,25 +194,14 @@ export default {
     input {
       height: 3rem;
       font-size: 2rem;
-      color: #1c301c;
       padding: 0 0.8rem;
-      border: none;
-      background-color: #d6ecd5;
-      text-align: center;
       border-radius: 0;
-      border-bottom: 0.1rem dashed green;
-
-      &::placeholder {
-        color: #8aa28a;
-        text-align: center;
-      }
+      text-align: center;
 
       &:focus {
         outline: none;
-        background-color: #bae8b9;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        border-bottom: 0.1rem solid green;
       }
     }
 
@@ -222,20 +210,20 @@ export default {
     }
   }
 
-  .toggle-auth {
+  button.toggle-auth {
     margin-top: 2.5rem;
     font-size: 1.1rem;
     width: 18rem;
   }
 
-  #registration-modal {
+  #registration .modal {
     span.pulsing {
       font-size: 2.1rem;
       animation: green-glow 1s infinite;
       user-select: none;
     }
 
-    h3:after {
+    h2:after {
       content: '🏡';
       position: absolute;
     }

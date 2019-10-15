@@ -132,9 +132,6 @@ export default {
   },
   created() {
     console.log('created desktop')
-    this.$store.commit('SET_PLAYER', {
-      isMobile: false
-    })
     window.addEventListener('keypress', e => {
       if (
         e.key === '`' &&
