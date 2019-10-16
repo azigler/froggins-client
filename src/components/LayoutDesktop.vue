@@ -1,7 +1,7 @@
 <template>
   <main class="layout desktop">
     <aside :class="`sidebar ${hideSidebar ? 'hidden' : ''}`">
-      <header class="froggins-header">
+      <header class="froggins header">
         <h1>Froggins</h1>
         <div
           class="toggle-hide"

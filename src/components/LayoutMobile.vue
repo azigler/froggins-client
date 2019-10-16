@@ -1,6 +1,6 @@
 <template>
   <main class="layout mobile">
-    <header class="froggins-header">
+    <header class="froggins header">
       <h1>Froggins</h1>
       <span class="time">
         {{ timeOfDay === 'night' ? '🌙' : '☀️' }}

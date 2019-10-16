@@ -1,6 +1,6 @@
 <template>
   <main class="froggins-auth">
-    <header class="froggins-header">
+    <header class="froggins header">
       <h1 id="froggins">Froggins</h1>
     </header>
     <div class="login" v-show="!register">
@@ -20,7 +20,7 @@
         placeholder="Password"
         @keyup.enter="logInPlayer()"
       />
-      <button @click="logInPlayer()">Log in</button>
+      <button class="green" @click="logInPlayer()">Log in</button>
       <span>{{ message }}</span>
     </div>
     <div class="register" v-show="register">
@@ -40,7 +40,7 @@
         placeholder="Password"
         @keyup.enter="registerPlayer()"
       />
-      <button @click="registerPlayer()">Register</button>
+      <button class="green" @click="registerPlayer()">Register</button>
       <span>{{ message }}</span>
     </div>
     <button class="toggle-auth yellow" @click="toggleAuth()">

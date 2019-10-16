@@ -1,8 +1,10 @@
 <template>
   <div id="client">
     <div class="server-handler">
-      <div class="message-box disconnected" v-if="!$store.state.server.online">
-        You are disconnected from Froggins. 🐸💔
+      <div class="mask" v-if="!$store.state.server.online">
+        <div class="message-box disconnected">
+          You are disconnected from Froggins. 🐸💔
+        </div>
       </div>
       <FrogginsWebSocket v-else />
     </div>
@@ -86,53 +88,9 @@ export default {
   background-color: #d7e6d7;
   border-radius: 0.4rem;
   width: 70%;
-  margin: 15% auto 0;
   padding: 2rem 0;
   border: 2px solid #1d2f1d;
   font-weight: bold;
   text-align: center;
-}
-
-// HOIST
-.froggins-header {
-  background-color: #d7edd5;
-  border-bottom: 2px solid #c2d8c0;
-  -webkit-box-shadow: 0px 2px 20px 0px #59925a;
-  box-shadow: 0px 2px 20px 0px #657566;
-}
-
-// HOIST
-.mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// HOIST
-.text-fade-wrapper {
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.8) 100%
-    );
-    width: 100%;
-    height: 1rem;
-  }
 }
 </style>
