@@ -2,7 +2,7 @@
   <div id="client">
     <div class="server-handler">
       <div class="mask" v-if="!$store.state.server.online">
-        <div class="modal disconnected">
+        <div id="disconnected" class="modal">
           You are disconnected from Froggins.
           <div>
             <span class="glow green">🐸</span><span class="glow red">❤️</span>
@@ -86,8 +86,7 @@ export default {
   position: absolute;
 }
 
-// HOIST
-.modal.disconnected {
+#disconnected .modal {
   background-color: #d7e6d7;
   border: 2px solid #1d2f1d;
   font-weight: bold;
