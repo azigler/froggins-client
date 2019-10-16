@@ -196,10 +196,6 @@ export default {
         margin: 0 0.5rem;
         text-align: left;
         font-size: 1.5rem;
-
-        &:before {
-          content: '🐸';
-        }
       }
 
       .toggle-hide {

@@ -2,8 +2,11 @@
   <div id="client">
     <div class="server-handler">
       <div class="mask" v-if="!$store.state.server.online">
-        <div class="message-box disconnected">
-          You are disconnected from Froggins. 🐸💔
+        <div class="modal disconnected">
+          You are disconnected from Froggins.
+          <div>
+            <span class="glow green">🐸</span><span class="glow red">❤️</span>
+          </div>
         </div>
       </div>
       <FrogginsWebSocket v-else />
@@ -84,13 +87,16 @@ export default {
 }
 
 // HOIST
-.message-box {
+.modal.disconnected {
   background-color: #d7e6d7;
-  border-radius: 0.4rem;
-  width: 70%;
-  padding: 2rem 0;
   border: 2px solid #1d2f1d;
   font-weight: bold;
   text-align: center;
+  margin-top: -20vh;
+
+  div span {
+    font-size: 1.7rem;
+    user-select: none;
+  }
 }
 </style>

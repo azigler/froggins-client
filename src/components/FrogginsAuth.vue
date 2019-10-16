@@ -61,7 +61,7 @@
           username and password to register for immediate access to the newest
           virtual pet adoption website on the internet.
         </div>
-        <span class="pulsing">🐸💚</span>
+        <span class="glow green">🐸</span><span class="glow red">❤️</span>
       </div>
     </modal>
   </main>
@@ -168,17 +168,8 @@ export default {
 .froggins-auth {
   text-align: center;
 
-  header {
-    h1 {
-      &:after {
-        content: '🐸';
-        position: absolute;
-      }
-    }
-  }
-
-  .login,
-  .register {
+  div.login,
+  div.register {
     margin: 10vh auto 0;
     width: 20rem;
     display: flex;
@@ -199,11 +190,21 @@ export default {
       padding: 0 0.8rem;
       border-radius: 0;
       text-align: center;
+      color: #1c301c;
+      border: none;
+      background-color: #d6ecd5;
+      border-bottom: 0.1rem dashed green;
+
+      &::placeholder {
+        color: #8aa28a;
+      }
 
       &:focus {
         outline: none;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        background-color: #bae8b9;
+        border-bottom: 0.1rem solid green;
       }
     }
 
@@ -219,9 +220,8 @@ export default {
   }
 
   #registration .modal {
-    span.pulsing {
+    span.glow {
       font-size: 2.1rem;
-      animation: glow-green 1s infinite;
       user-select: none;
     }
 

@@ -12,6 +12,27 @@
     text-shadow: 0 0 0 #d7f700;
   }
 }
+.glow.green {
+  animation: glow-green 1s infinite;
+}
+
+@keyframes glow-red {
+  0% {
+    text-shadow: 0 0 0px #ff1d1d;
+  }
+  40% {
+    text-shadow: 0 0 10px #a30000;
+  }
+  60% {
+    text-shadow: 0 0 20px #e20707;
+  }
+  100% {
+    text-shadow: 0 0 0 #ff4848;
+  }
+}
+.glow.red {
+  animation: glow-red 1s infinite;
+}
 
 @keyframes background-to-top {
   from {

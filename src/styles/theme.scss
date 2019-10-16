@@ -1,0 +1,13 @@
+.froggins {
+  &.header {
+    background-color: #d7edd5;
+    border-bottom: 2px solid #c2d8c0;
+    -webkit-box-shadow: 0px 2px 20px 0px #59925a;
+    box-shadow: 0px 2px 20px 0px #657566;
+
+    > h1:after {
+      content: '🐸';
+      position: absolute;
+    }
+  }
+}

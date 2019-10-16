@@ -164,12 +164,7 @@ export default {
     align-items: center;
 
     h1 {
-      margin: 0;
       font-size: 1rem;
-
-      &:before {
-        content: '🐸';
-      }
     }
   }
 
