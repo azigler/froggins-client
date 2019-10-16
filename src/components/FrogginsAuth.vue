@@ -190,21 +190,11 @@ export default {
       padding: 0 0.8rem;
       border-radius: 0;
       text-align: center;
-      color: #1c301c;
-      border: none;
-      background-color: #d6ecd5;
-      border-bottom: 0.1rem dashed green;
-
-      &::placeholder {
-        color: #8aa28a;
-      }
 
       &:focus {
         outline: none;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        background-color: #bae8b9;
-        border-bottom: 0.1rem solid green;
       }
     }
 
