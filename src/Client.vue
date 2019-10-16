@@ -86,7 +86,7 @@ export default {
   position: absolute;
 }
 
-#disconnected .modal {
+#disconnected.modal {
   background-color: #d7e6d7;
   border: 2px solid #1d2f1d;
   font-weight: bold;

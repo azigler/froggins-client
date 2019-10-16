@@ -42,6 +42,7 @@ input {
   &.green {
     color: #1c301c;
     border: none;
+    border-radius: 0;
     background-color: #d6ecd5;
     border-bottom: 0.1rem dashed green;
 
@@ -50,6 +51,9 @@ input {
     }
 
     &:focus {
+      outline: none;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       background-color: #bae8b9;
       border-bottom: 0.1rem solid green;
     }

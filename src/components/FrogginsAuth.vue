@@ -188,14 +188,7 @@ export default {
       height: 3rem;
       font-size: 2rem;
       padding: 0 0.8rem;
-      border-radius: 0;
       text-align: center;
-
-      &:focus {
-        outline: none;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-      }
     }
 
     button {
