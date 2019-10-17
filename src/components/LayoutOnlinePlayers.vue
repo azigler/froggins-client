@@ -1,5 +1,5 @@
 <template>
-  <div class="online-players">
+  <div class="layout-online-players">
     <span class="count" @click="showModal = true">
       👥 {{ $store.state.server.onlinePlayers.length }}
     </span>
@@ -35,14 +35,14 @@ export default {
 </script>
 
 <style lang="scss">
-.online-players .count {
+.layout-online-players .count {
   color: blue;
   transition: all 2s ease-out;
+  font-weight: bold;
 
   &:hover {
     cursor: pointer;
     color: red;
-    font-size: 110%;
   }
 }
 </style>

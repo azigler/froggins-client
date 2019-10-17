@@ -13,7 +13,9 @@ export default new Vuex.Store({
     },
     server: {
       onlinePlayers: [],
-      online: false
+      online: false,
+      timestamp: '',
+      timeOfDay: ''
     },
     player: {
       auth: false,

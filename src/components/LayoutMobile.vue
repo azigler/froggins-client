@@ -2,10 +2,7 @@
   <main class="layout mobile">
     <header class="froggins header">
       <h1>Froggins</h1>
-      <span class="time">
-        {{ timeOfDay === 'night' ? '🌙' : '☀️' }}
-        {{ timeOfDay.capitalize() }}
-      </span>
+      <layout-clock />
       <layout-online-players />
     </header>
     <div class="tabs">
@@ -52,16 +49,12 @@
       <router-link to="/">Home</router-link>
       <router-link to="/debug">Debug</router-link>
     </nav>
-    <div v-if="panelTab === 'play'" :class="`location ${timeOfDay}`">
-      <span class="name">{{ locationName }}</span>
-      <img :src="locationImage" class="black" />
-    </div>
+    <layout-location v-if="panelTab === 'play'" />
     <layout-footer />
   </main>
 </template>
 
 <script>
-import moment from 'moment'
 import PanelFroggins from './PanelFroggins'
 import PanelItems from './PanelItems'
 import PanelStructures from './PanelStructures'
@@ -69,6 +62,8 @@ import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
 import LayoutFooter from './LayoutFooter'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
+import LayoutClock from './LayoutClock'
+import LayoutLocation from './LayoutLocation'
 
 export default {
   name: 'LayoutDesktop',
@@ -79,31 +74,9 @@ export default {
     PanelWorld,
     PanelHelp,
     LayoutFooter,
-    LayoutOnlinePlayers
-  },
-  watch: {
-    time(newTime, oldTime) {
-      if (oldTime === '' || newTime.hours() !== oldTime.hours()) {
-        if (newTime.hours() >= 5 || newTime.hours() < 7) {
-          this.timeOfDay = 'dawn'
-        }
-        if (newTime.hours() >= 7 && newTime.hours() < 12) {
-          this.timeOfDay = 'morning'
-        }
-        if (newTime.hours() >= 11 && newTime.hours() < 13) {
-          this.timeOfDay = 'noon'
-        }
-        if (newTime.hours() >= 13 && newTime.hours() < 17) {
-          this.timeOfDay = 'afternoon'
-        }
-        if (newTime.hours() >= 17 && newTime.hours() < 19) {
-          this.timeOfDay = 'dusk'
-        }
-        if (newTime.hours() >= 19 || newTime.hours() < 6) {
-          this.timeOfDay = 'night'
-        }
-      }
-    }
+    LayoutOnlinePlayers,
+    LayoutClock,
+    LayoutLocation
   },
   created() {
     console.log('created mobile')
@@ -114,21 +87,7 @@ export default {
   data() {
     return {
       navShow: true,
-      hideSidebar: false,
-      locationImage: 'assets/img/location-swamp.png',
-      time: '',
-      panelTab: 'play',
-      timeOfDay: 'start',
-      locationName: 'deep in the swamplands'
-    }
-  },
-  mounted() {
-    this.updateDateTime()
-  },
-  methods: {
-    updateDateTime: function updateDateTime() {
-      this.time = moment()
-      setTimeout(this.updateDateTime, 1000)
+      panelTab: 'play'
     }
   }
 }
@@ -187,97 +146,6 @@ export default {
     }
   }
 
-  .location {
-    border: 2px solid #1c2f1c;
-    margin: 0.2rem;
-    border-radius: 5px;
-    margin-bottom: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    user-select: none;
-    position: absolute;
-    bottom: 0;
-    left: 2vw;
-    height: 11.364rem;
-    transition: margin 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    margin: -6rem 1.25rem;
-    z-index: 2;
-
-    &:hover {
-      opacity: 1;
-      margin: 0 1.25rem;
-    }
-
-    &:not(:hover):before {
-      content: 'tap!';
-      position: absolute;
-      right: 0;
-      top: 0;
-      transform: rotate(25deg);
-      z-index: 2;
-      font-weight: bold;
-      background-color: white;
-      border-radius: 18px;
-      border: 1px dashed;
-      color: #ad5094;
-      text-shadow: #f5f556 0px 1px 10px;
-    }
-
-    &.dawn,
-    &.morning,
-    &.noon,
-    &.afternoon,
-    &.dusk {
-      .name {
-        background-color: rgba(215, 236, 213, 0.8);
-        color: #1c2f1c;
-      }
-    }
-
-    &.dawn img {
-      filter: saturate(0.8) brightness(0.8);
-    }
-
-    &.noon img {
-      filter: saturate(1) brightness(1.2);
-    }
-
-    &.dusk img {
-      filter: saturate(2) brightness(0.8);
-    }
-
-    &.night img {
-      filter: saturate(0.5) brightness(0.3);
-    }
-
-    &.start img {
-      &.black {
-        filter: saturate(1) brightness(0);
-      }
-    }
-
-    .name {
-      transition: all 10s ease-out;
-    }
-
-    img {
-      transition: filter 10s ease-out;
-      image-rendering: pixelated;
-    }
-
-    .name {
-      width: 100%;
-      height: 1.2rem;
-      border-bottom: dotted #1b2f1b 1px;
-      line-height: 1.1;
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      color: #b1c9db;
-      background-color: rgba(215, 236, 213, 0.3);
-    }
-  }
-
   .panel {
     border-top: none;
     height: 80%;
@@ -317,36 +185,6 @@ export default {
 
   div#main {
     flex: auto;
-  }
-
-  footer.layout-footer {
-    align-self: flex-end;
-
-    &:after {
-      content: '';
-      position: absolute;
-      background-color: #b4cbba;
-      width: 100vw;
-      left: 0;
-      height: 100%;
-      z-index: 0;
-      border-top: 1px solid #1d2f1d;
-    }
-
-    span {
-      z-index: 1;
-      margin-top: -0.3rem;
-    }
-
-    .discord {
-      justify-content: flex-end;
-      z-index: 1;
-
-      a {
-        max-height: 2rem;
-        width: 6rem;
-      }
-    }
   }
 }
 </style>

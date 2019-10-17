@@ -53,4 +53,36 @@ footer.layout-footer {
     text-shadow: #7289d8 0px 0px 13px;
   }
 }
+
+main.layout.mobile {
+  footer.layout-footer {
+    align-self: flex-end;
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: #b4cbba;
+      width: 100vw;
+      left: 0;
+      height: 100%;
+      z-index: 0;
+      border-top: 1px solid #1d2f1d;
+    }
+
+    span {
+      z-index: 1;
+      margin-top: -0.3rem;
+    }
+
+    .discord {
+      justify-content: flex-end;
+      z-index: 1;
+
+      a {
+        max-height: 2rem;
+        width: 6rem;
+      }
+    }
+  }
+}
 </style>

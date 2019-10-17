@@ -50,6 +50,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  user-select: none;
 
   header {
     border-bottom: 2px dashed #3e743f;
@@ -58,7 +59,6 @@
       margin: 0 auto;
       color: #3e743f;
       text-shadow: 0px 1px 2px #cbd0cb;
-      user-select: none;
     }
   }
 

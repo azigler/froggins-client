@@ -11,15 +11,9 @@
           ◀️
         </div>
       </header>
-      <div :class="`location ${timeOfDay}`">
-        <span class="name">{{ locationName }}</span>
-        <img :src="locationImage" class="black" />
-      </div>
+      <layout-location />
       <div class="status-bar">
-        <span class="time">
-          {{ timeOfDay === 'night' ? '🌙' : '☀️' }}
-          {{ timeOfDay.capitalize() }}
-        </span>
+        <layout-clock />
         <layout-online-players />
       </div>
       <div class="panel-container">
@@ -76,14 +70,15 @@
 </template>
 
 <script>
-import moment from 'moment'
 import PanelFroggins from './PanelFroggins'
 import PanelItems from './PanelItems'
 import PanelStructures from './PanelStructures'
 import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
 import LayoutFooter from './LayoutFooter'
+import LayoutLocation from './LayoutLocation'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
+import LayoutClock from './LayoutClock'
 
 export default {
   name: 'LayoutDesktop',
@@ -94,31 +89,9 @@ export default {
     PanelWorld,
     PanelHelp,
     LayoutFooter,
-    LayoutOnlinePlayers
-  },
-  watch: {
-    time(newTime, oldTime) {
-      if (oldTime === '' || newTime.hours() !== oldTime.hours()) {
-        if (newTime.hours() >= 5 || newTime.hours() < 7) {
-          this.timeOfDay = 'dawn'
-        }
-        if (newTime.hours() >= 7 && newTime.hours() < 12) {
-          this.timeOfDay = 'morning'
-        }
-        if (newTime.hours() >= 11 && newTime.hours() < 13) {
-          this.timeOfDay = 'noon'
-        }
-        if (newTime.hours() >= 13 && newTime.hours() < 17) {
-          this.timeOfDay = 'afternoon'
-        }
-        if (newTime.hours() >= 17 && newTime.hours() < 19) {
-          this.timeOfDay = 'dusk'
-        }
-        if (newTime.hours() >= 19 || newTime.hours() < 6) {
-          this.timeOfDay = 'night'
-        }
-      }
-    }
+    LayoutLocation,
+    LayoutOnlinePlayers,
+    LayoutClock
   },
   created() {
     console.log('created desktop')
@@ -138,20 +111,7 @@ export default {
     return {
       navShow: true,
       hideSidebar: false,
-      locationImage: 'assets/img/location-swamp.png',
-      time: '',
-      panelTab: 'PanelFroggins',
-      timeOfDay: 'start',
-      locationName: 'deep in the swamplands'
-    }
-  },
-  mounted() {
-    this.updateDateTime()
-  },
-  methods: {
-    updateDateTime() {
-      this.time = moment()
-      setTimeout(this.updateDateTime, 1000 * 60)
+      panelTab: 'PanelFroggins'
     }
   }
 }
@@ -213,72 +173,6 @@ export default {
       }
     }
 
-    .location {
-      border: 2px solid #1c2f1c;
-      margin: 0.2rem;
-      border-radius: 5px;
-      margin-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      user-select: none;
-      position: relative;
-      height: 11.364rem;
-
-      &.dawn,
-      &.morning,
-      &.noon,
-      &.afternoon,
-      &.dusk {
-        .name {
-          background-color: rgba(215, 236, 213, 0.8);
-          color: #1c2f1c;
-        }
-      }
-
-      &.dawn img {
-        filter: saturate(0.8) brightness(0.8);
-      }
-
-      &.noon img {
-        filter: saturate(1) brightness(1.2);
-      }
-
-      &.dusk img {
-        filter: saturate(2) brightness(0.8);
-      }
-
-      &.night img {
-        filter: saturate(0.5) brightness(0.3);
-      }
-
-      &.start img {
-        &.black {
-          filter: saturate(1) brightness(0);
-        }
-      }
-
-      .name {
-        transition: all 10s ease-out;
-      }
-
-      img {
-        transition: filter 10s ease-out;
-        image-rendering: pixelated;
-      }
-
-      .name {
-        width: 100%;
-        height: 1.2rem;
-        border-bottom: dotted #1b2f1b 1px;
-        line-height: 1.1;
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        color: #b1c9db;
-        background-color: rgba(215, 236, 213, 0.3);
-      }
-    }
-
     .status-bar {
       border: 2px solid #1c2f1c;
       margin: 0.2rem;
@@ -293,10 +187,6 @@ export default {
       padding: 0 0.5rem;
       user-select: none;
       min-height: 1.7rem;
-
-      .users {
-        font-weight: bold;
-      }
     }
 
     .panel-container {
