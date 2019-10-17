@@ -9,7 +9,7 @@ export default new Vuex.Store({
       isConnected: false,
       message: '',
       reconnectError: false,
-      status: 'Attempting connection to Froggins...'
+      status: '🔌🆕 Attempting connection to Froggins...'
     },
     server: {
       connectedPlayers: [],
@@ -43,11 +43,13 @@ export default new Vuex.Store({
       state.socket.status = '🔌🚫 Froggins connection error!'
       console.error(state, event)
     },
-    SOCKET_RECONNECT(state) {
-      state.socket.status = `🔌🔄 Reconnecting to Froggins...`
+    SOCKET_RECONNECT(state, count) {
+      state.socket.status = `🔌🔄 Reattempting connection to Froggins...`
+      if (count === 3)
+        state.socket.status = `🔌🔄 Reattempting connection one last time...`
     },
     SOCKET_RECONNECT_ERROR(state) {
-      state.socket.status = '🔌🔄🚫 Froggins reconnection error!'
+      state.socket.status = `🔌🚫 You're unable to connect to Froggins. Check your internet connection and try again later.`
       state.socket.reconnectError = true
     },
     SOCKET_ONMESSAGE(state, message) {
