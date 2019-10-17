@@ -45,7 +45,7 @@ export default new Vuex.Store({
     },
     SOCKET_RECONNECT(state, count) {
       state.socket.status = `🔌🔄 Reattempting connection to Froggins...`
-      if (count === 3)
+      if (count === 3 && process.env.NODE_ENV === 'production')
         state.socket.status = `🔌🔄 Reattempting connection one last time...`
     },
     SOCKET_RECONNECT_ERROR(state) {

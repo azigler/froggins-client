@@ -48,14 +48,14 @@ const isLAN = window.location.hostname.includes('192.168.')
 
 Vue.use(
   VueNativeSock,
-  `ws${process.env.NODE_ENV === 'development' && !isLAN ? '' : 's'}://s${
+  `ws${process.env.NODE_ENV === 'development' && !isLAN ? '' : 's'}://${
     isLAN ? isLAN : process.env.VUE_APP_WEBSOCKET_URL
   }:${process.env.VUE_APP_WEBSOCKET_PORT}`,
   {
     format: 'json',
     reconnection: true,
     reconnectionAttempts:
-      1 * (process.env.NODE_ENV === 'developments' ? 100 : 2),
+      1 * (process.env.NODE_ENV === 'development' ? 100 : 2),
     reconnectionDelay: 1 * 1000,
     store
   }
