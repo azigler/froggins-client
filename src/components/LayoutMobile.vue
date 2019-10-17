@@ -6,9 +6,7 @@
         {{ timeOfDay === 'night' ? '🌙' : '☀️' }}
         {{ timeOfDay.capitalize() }}
       </span>
-      <span class="users">
-        👥 {{ $store.state.server.connectedPlayers.length }}
-      </span>
+      <layout-online-players />
     </header>
     <div class="tabs">
       <div
@@ -58,21 +56,7 @@
       <span class="name">{{ locationName }}</span>
       <img :src="locationImage" class="black" />
     </div>
-    <footer>
-      <div class="discord">
-        <a
-          class="purple button"
-          target="_blank"
-          href="https://discord.gg/QscwwBH"
-        />
-      </div>
-      <span class="copyright">
-        © 2019
-        <a target="_blank" href="https://www.andrewzigler.com/">
-          Andrew Zigler
-        </a>
-      </span>
-    </footer>
+    <layout-footer />
   </main>
 </template>
 
@@ -83,6 +67,8 @@ import PanelItems from './PanelItems'
 import PanelStructures from './PanelStructures'
 import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
+import LayoutFooter from './LayoutFooter'
+import LayoutOnlinePlayers from './LayoutOnlinePlayers'
 
 export default {
   name: 'LayoutDesktop',
@@ -91,7 +77,9 @@ export default {
     PanelItems,
     PanelStructures,
     PanelWorld,
-    PanelHelp
+    PanelHelp,
+    LayoutFooter,
+    LayoutOnlinePlayers
   },
   watch: {
     time(newTime, oldTime) {
@@ -331,25 +319,7 @@ export default {
     flex: auto;
   }
 
-  button {
-    padding: 0.5rem;
-    border-radius: 0.4rem;
-    font-size: 0.8rem;
-    background-color: #344434;
-    color: white;
-    font-weight: bold;
-
-    &:hover {
-      background-color: #567b56;
-      cursor: pointer;
-      font-style: italic;
-    }
-  }
-
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  footer.layout-footer {
     align-self: flex-end;
 
     &:after {
@@ -364,32 +334,17 @@ export default {
     }
 
     span {
-      font-size: 11px;
-      margin-top: 0rem;
-      color: #414a73;
-      text-shadow: #7289d8 0px 0px 13px;
       z-index: 1;
       margin-top: -0.3rem;
     }
 
     .discord {
-      height: 3.2rem;
-      align-items: center;
-      display: flex;
       justify-content: flex-end;
       z-index: 1;
-      margin-top: 0.2rem;
 
       a {
-        height: 100%;
         max-height: 2rem;
         width: 6rem;
-        border-radius: 0.4rem;
-        margin: 0 0.2rem;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-image: url('https://discordapp.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg');
-        position: relative;
       }
     }
   }

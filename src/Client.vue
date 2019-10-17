@@ -93,8 +93,9 @@ export default {
   text-align: center;
   margin-top: -20vh;
   min-width: 25%;
+  user-select: none;
 
-  div span {
+  div {
     font-size: 1.7rem;
     user-select: none;
   }

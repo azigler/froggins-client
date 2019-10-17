@@ -12,7 +12,7 @@ export default new Vuex.Store({
       status: '🔌🆕 Attempting connection to Froggins...'
     },
     server: {
-      connectedPlayers: [],
+      onlinePlayers: [],
       online: false
     },
     player: {

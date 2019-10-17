@@ -54,8 +54,7 @@ Vue.use(
   {
     format: 'json',
     reconnection: true,
-    reconnectionAttempts:
-      1 * (process.env.NODE_ENV === 'development' ? 100 : 2),
+    reconnectionAttempts: 1 * (process.env.NODE_ENV === 'development' ? 99 : 2),
     reconnectionDelay: 1 * 1000,
     store
   }

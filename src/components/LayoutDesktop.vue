@@ -20,9 +20,7 @@
           {{ timeOfDay === 'night' ? '🌙' : '☀️' }}
           {{ timeOfDay.capitalize() }}
         </span>
-        <span class="users"
-          >👥 {{ $store.state.server.connectedPlayers.length }}</span
-        >
+        <layout-online-players />
       </div>
       <div class="panel-container">
         <div class="tabs">
@@ -64,19 +62,7 @@
           </div>
         </div>
         <component :is="panelTab" class="content" />
-        <div class="discord">
-          <a
-            class="purple button"
-            target="_blank"
-            href="https://discord.gg/QscwwBH"
-          />
-        </div>
-        <span class="copyright">
-          © 2019
-          <a target="_blank" href="https://www.andrewzigler.com/">
-            Andrew Zigler
-          </a>
-        </span>
+        <layout-footer />
       </div>
     </aside>
     <div id="main">
@@ -96,6 +82,8 @@ import PanelItems from './PanelItems'
 import PanelStructures from './PanelStructures'
 import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
+import LayoutFooter from './LayoutFooter'
+import LayoutOnlinePlayers from './LayoutOnlinePlayers'
 
 export default {
   name: 'LayoutDesktop',
@@ -104,7 +92,9 @@ export default {
     PanelItems,
     PanelStructures,
     PanelWorld,
-    PanelHelp
+    PanelHelp,
+    LayoutFooter,
+    LayoutOnlinePlayers
   },
   watch: {
     time(newTime, oldTime) {
@@ -313,7 +303,7 @@ export default {
       display: flex;
       flex-direction: column;
       height: 100%;
-      margin-bottom: 8vh;
+      margin-bottom: 9vh;
     }
 
     .tabs {
@@ -350,26 +340,6 @@ export default {
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
     }
-
-    .discord {
-      height: 3.2rem;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      min-height: 5%;
-
-      a {
-        height: 75%;
-        max-height: 75%;
-        width: 50%;
-        border-radius: 0.4rem;
-        margin: 0 0.2rem;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-image: url('https://discordapp.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg');
-        position: relative;
-      }
-    }
   }
 
   nav {
@@ -401,29 +371,6 @@ export default {
 
   div#main {
     flex: auto;
-  }
-
-  button {
-    padding: 0.5rem;
-    border-radius: 0.4rem;
-    font-size: 0.8rem;
-    background-color: #344434;
-    color: white;
-    font-weight: bold;
-
-    &:hover {
-      background-color: #567b56;
-      cursor: pointer;
-      font-style: italic;
-    }
-  }
-
-  span.copyright {
-    font-size: 0.8rem;
-    margin-top: -0.4rem;
-    margin-bottom: 0.4rem;
-    color: #414a73;
-    text-shadow: #7289d8 0px 0px 13px;
   }
 }
 </style>

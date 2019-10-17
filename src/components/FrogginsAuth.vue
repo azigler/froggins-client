@@ -148,7 +148,10 @@ export default {
     this.$options.sockets.onmessage = msg => {
       let data = JSON.parse(msg.data)
 
-      if (data.id.split('-')[0] === 'reject') {
+      if (
+        data.id.split === 'reject-login' ||
+        data.id.split === 'reject-registration'
+      ) {
         this.message = data.value
       } else {
         if (data.id === 'confirm-login' || data.id === 'confirm-registration') {

@@ -10,7 +10,7 @@
     <div>Players:</div>
     <span
       v-show="$store.state.server.online"
-      v-for="player in $store.state.server.connectedPlayers"
+      v-for="player in $store.state.server.onlinePlayers"
       v-bind:key="player"
     >
       {{ player }}

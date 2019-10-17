@@ -90,7 +90,7 @@ button,
 
   &.green {
     background-color: #68a268;
-    color: white;
+    color: #fff;
 
     &:hover {
       background-color: #69cc69;
@@ -128,9 +128,7 @@ button,
 
   &.purple {
     background-color: #7289d9;
-    box-shadow: inset 0px -1px 1px 0px #4c5884;
-    border: 1px solid #343858;
-    text-shadow: 0px 1px 1px #4c5884;
+    color: #fff;
 
     &:hover {
       background-color: #9fb2f5;
@@ -143,7 +141,7 @@ button,
 
     &:active {
       background-color: #69759e;
-      box-shadow: inset #576184 1px 1px 6px 3px;
+      box-shadow: inset #576184 1px 1px 2px 2px;
     }
   }
 
