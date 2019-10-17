@@ -8,7 +8,8 @@ export default new Vuex.Store({
     socket: {
       isConnected: false,
       message: '',
-      reconnectError: false
+      reconnectError: false,
+      status: 'Attempting connection to Froggins...'
     },
     server: {
       connectedPlayers: [],
@@ -28,25 +29,25 @@ export default new Vuex.Store({
     SOCKET_ONOPEN(state, event) {
       Vue.prototype.$socket = event.currentTarget
       state.socket.isConnected = true
-      console.log('🔌✅ WebSocket connected!')
+      state.socket.status = '🔌✅ Connected to Froggins!'
     },
     SOCKET_ONCLOSE(state) {
       if (state.socket.isConnected) {
         state.socket.isConnected = false
         state.server.online = false
         state.player.auth = false
-        console.log('🔌❌ WebSocket disconnected!')
+        state.socket.status = '🔌❌ Disconnected from Froggins!'
       }
     },
     SOCKET_ONERROR(state, event) {
-      console.log('🔌🚫 WebSocket error!')
+      state.socket.status = '🔌🚫 Froggins connection error!'
       console.error(state, event)
     },
-    SOCKET_RECONNECT(state, count) {
-      console.log(`🔌🔄 (${count}) Reconnecting to WebSocket...`)
+    SOCKET_RECONNECT(state) {
+      state.socket.status = `🔌🔄 Reconnecting to Froggins...`
     },
     SOCKET_RECONNECT_ERROR(state) {
-      console.log('🔌🔄🚫 WebSocket reconnection error!')
+      state.socket.status = '🔌🔄🚫 Froggins reconnection error!'
       state.socket.reconnectError = true
     },
     SOCKET_ONMESSAGE(state, message) {

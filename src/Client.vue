@@ -2,8 +2,8 @@
   <div id="client">
     <div class="server-handler">
       <div class="mask" v-if="!$store.state.server.online">
-        <div id="disconnected" class="modal">
-          You are disconnected from Froggins.
+        <div id="socket-status" class="modal">
+          {{ $store.state.socket.status }}
           <div>
             <span class="glow green">🐸</span><span class="glow red">❤️</span>
           </div>
@@ -86,12 +86,13 @@ export default {
   position: absolute;
 }
 
-#disconnected.modal {
+#socket-status.modal {
   background-color: #d7e6d7;
   border: 2px solid #1d2f1d;
   font-weight: bold;
   text-align: center;
   margin-top: -20vh;
+  min-width: 25%;
 
   div span {
     font-size: 1.7rem;
