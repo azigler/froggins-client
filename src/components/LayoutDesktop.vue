@@ -17,55 +17,12 @@
         <layout-online-players />
       </div>
       <div class="panel-container">
-        <div class="tabs">
-          <div
-            @click="panelTab = 'PanelFroggins'"
-            :class="
-              `tab froggins ${panelTab === 'PanelFroggins' ? 'selected' : ''}`
-            "
-          >
-            🦎
-          </div>
-          <div
-            @click="panelTab = 'PanelItems'"
-            :class="`tab items ${panelTab === 'PanelItems' ? 'selected' : ''}`"
-          >
-            📦
-          </div>
-          <div
-            @click="panelTab = 'PanelStructures'"
-            :class="
-              `tab structures ${
-                panelTab === 'PanelStructures' ? 'selected' : ''
-              }`
-            "
-          >
-            🏠
-          </div>
-          <div
-            @click="panelTab = 'PanelWorld'"
-            :class="`tab world ${panelTab === 'PanelWorld' ? 'selected' : ''}`"
-          >
-            🌐
-          </div>
-          <div
-            @click="panelTab = 'PanelHelp'"
-            :class="`tab help ${panelTab === 'PanelHelp' ? 'selected' : ''}`"
-          >
-            ❔
-          </div>
-        </div>
-        <component :is="panelTab" class="content" />
+        <layout-panel-tabs v-on:current-tab="setCurrentTab" />
+        <component :is="currentTab" />
         <layout-footer />
       </div>
     </aside>
-    <div id="main">
-      <nav v-if="navShow">
-        <router-link to="/">Home</router-link>
-        <router-link to="/debug">Debug</router-link>
-      </nav>
-      <router-view />
-    </div>
+    <game-container />
   </main>
 </template>
 
@@ -79,6 +36,8 @@ import LayoutFooter from './LayoutFooter'
 import LayoutLocation from './LayoutLocation'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
 import LayoutClock from './LayoutClock'
+import LayoutPanelTabs from './LayoutPanelTabs'
+import GameContainer from './GameContainer'
 
 export default {
   name: 'LayoutDesktop',
@@ -91,7 +50,9 @@ export default {
     LayoutFooter,
     LayoutLocation,
     LayoutOnlinePlayers,
-    LayoutClock
+    LayoutClock,
+    LayoutPanelTabs,
+    GameContainer
   },
   created() {
     console.log('created desktop')
@@ -109,9 +70,13 @@ export default {
   },
   data() {
     return {
-      navShow: true,
       hideSidebar: false,
-      panelTab: 'PanelFroggins'
+      currentTab: 'PanelFroggins'
+    }
+  },
+  methods: {
+    setCurrentTab(newTab) {
+      this.currentTab = newTab
     }
   }
 }
@@ -194,73 +159,18 @@ export default {
       flex-direction: column;
       height: 100%;
       margin-bottom: 10vh;
-    }
 
-    .tabs {
-      display: flex;
-      justify-content: space-between;
-      border: 2px solid #1c2f1c;
-      margin: 0 0.2rem;
-      border-radius: 5px;
-      background-color: #1c2f1c;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      min-height: 1.8rem;
-
-      .tab {
-        border-radius: 5px;
-        padding: 0 0.4rem 0 0.5rem;
-        background-color: #cccc7d;
-
-        &:hover,
-        &.selected {
-          background-color: red;
-          cursor: pointer;
-        }
+      .panel {
+        background-color: #9ad89a;
+        border: 2px solid #495d49;
+        padding: 0.5rem;
+        margin: 0 0.2rem;
+        border-top: none;
+        height: 100%;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
       }
     }
-
-    .panel {
-      background-color: #9ad89a;
-      border: 2px solid #495d49;
-      padding: 0.5rem;
-      margin: 0 0.2rem;
-      border-top: none;
-      height: 100%;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-  }
-
-  nav {
-    padding: 0rem 2rem;
-    background-color: #f5f556;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 2px solid #1d2f1d;
-
-    a {
-      background-color: #ecec87;
-      padding: 0.7rem 0.5rem;
-      color: #464622;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.8rem;
-      border: 2px solid #1d2f1d;
-      border-top: none;
-      border-bottom: none;
-
-      &:hover {
-        background-color: #f3f3a0;
-        color: #327132;
-        box-shadow: inset green 0px 0px 5px 0px;
-      }
-    }
-  }
-
-  div#main {
-    flex: auto;
   }
 }
 </style>

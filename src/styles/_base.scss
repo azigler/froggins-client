@@ -66,7 +66,7 @@ button,
   background-color: #eaeaea;
   color: #000;
   font-weight: bold;
-  text-shadow: 0px 1px 1px #1d1d1d;
+  text-shadow: 0px 1px 1px #b1b1b1;
   position: relative;
   overflow: hidden;
   box-shadow: inset #fffce6 1px 1px 1px;
@@ -91,6 +91,7 @@ button,
   &.green {
     background-color: #68a268;
     color: #fff;
+    text-shadow: 0px 1px 1px #1d1d1d;
 
     &:hover {
       background-color: #69cc69;
@@ -110,6 +111,7 @@ button,
   &.yellow {
     background-color: #e0c400;
     color: #fff;
+    text-shadow: 0px 1px 1px #1d1d1d;
 
     &:hover {
       background-color: #ffe219;
@@ -129,6 +131,7 @@ button,
   &.purple {
     background-color: #7289d9;
     color: #fff;
+    text-shadow: 0px 1px 1px #1d1d1d;
 
     &:hover {
       background-color: #9fb2f5;
