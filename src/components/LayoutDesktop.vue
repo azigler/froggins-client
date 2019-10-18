@@ -193,7 +193,7 @@ export default {
       display: flex;
       flex-direction: column;
       height: 100%;
-      margin-bottom: 9vh;
+      margin-bottom: 10vh;
     }
 
     .tabs {

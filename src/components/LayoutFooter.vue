@@ -32,7 +32,8 @@ footer.layout-footer {
     align-items: center;
     display: flex;
     justify-content: center;
-    min-height: 5%;
+    min-height: 2vh;
+    margin-top: 0.4rem;
 
     > a {
       height: 75%;
@@ -46,11 +47,34 @@ footer.layout-footer {
 
   span.copyright {
     font-size: 0.7rem;
-    margin-top: -0.4rem;
-    margin-bottom: 0.4rem;
+    margin-top: 0.4rem;
     color: #414a73;
     display: block;
     text-shadow: #7289d8 0px 0px 13px;
+  }
+}
+
+main.layout.desktop {
+  @media only screen and (max-height: 769px) and (max-width: 1025px) {
+    div.discord {
+      margin-top: 0.8rem;
+    }
+
+    span.copyright {
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+main.layout.desktop {
+  @media only screen and (min-width: 769px) and (min-width: 1025px) {
+    div.discord {
+      margin-top: 0;
+    }
+
+    span.copyright {
+      margin-top: -0.4rem;
+    }
   }
 }
 

@@ -19,8 +19,6 @@ export default {
 
 <style lang="scss">
 .layout-location {
-  display: flex;
-  flex-direction: column;
   border: 2px solid #1c2f1c;
   margin: 0.2rem;
   border-radius: 5px;
