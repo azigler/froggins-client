@@ -54,7 +54,7 @@ export default {
       this.window.width = window.innerWidth
       this.window.height = window.innerHeight
       this.$store.commit('SET_PLAYER', {
-        isMobile: this.window.width < 768 ? true : false
+        isMobile: this.window.width < 769 ? true : false
       })
     }
   },
