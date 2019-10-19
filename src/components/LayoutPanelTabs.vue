@@ -36,8 +36,8 @@
     </div>
     <div
       v-if="$store.state.player.isMobile"
-      @click="currentTab = 'GameContainer'"
-      :class="`tab help ${currentTab === 'GameContainer' ? 'selected' : ''}`"
+      @click="currentTab = 'PanelGame'"
+      :class="`tab help ${currentTab === 'PanelGame' ? 'selected' : ''}`"
     >
       🕹️
     </div>
@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       currentTab: `${
-        this.$store.state.player.isMobile ? 'GameContainer' : 'PanelFroggins'
+        this.$store.state.player.isMobile ? 'PanelGame' : 'PanelFroggins'
       }`
     }
   },

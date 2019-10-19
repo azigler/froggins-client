@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-clock">
+  <div class="layout-time">
     <span class="time" @click="showModal = true">
       {{ $store.state.server.timeOfDay === 'night' ? '🌙' : '☀️' }}
       {{
@@ -7,8 +7,8 @@
           $store.state.server.timeOfDay.slice(1)
       }}
     </span>
-    <modal id="clock" v-if="showModal" @close="showModal = false">
-      <h2 slot="header">Clock</h2>
+    <modal id="time" v-if="showModal" @close="showModal = false">
+      <h2 slot="header">Time</h2>
       <div slot="body">
         <span>
           {{ $store.state.server.timestamp || new Date() }}
@@ -23,7 +23,7 @@ import moment from 'moment'
 import Modal from './Modal.vue'
 
 export default {
-  name: 'LayoutClock',
+  name: 'LayoutTime',
   components: {
     Modal
   },
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss">
-.layout-clock .time {
+.layout-time .time {
   color: blue;
   transition: all 2s ease-out;
   font-weight: bold;

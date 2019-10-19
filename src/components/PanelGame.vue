@@ -1,5 +1,5 @@
 <template>
-  <div class="game-container">
+  <div class="panel game">
     <nav v-if="navShow">
       <router-link to="/">Home</router-link>
       <router-link to="/debug">Debug</router-link>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'GameContainer',
+  name: 'PanelGame',
   data() {
     return {
       navShow: true
@@ -20,25 +20,26 @@ export default {
 </script>
 
 <style lang="scss">
-.game-container {
+.panel.game {
   border-top: none;
   flex: auto;
 }
 
 main.layout.desktop {
-  .game-container {
+  .panel.game {
     flex: auto;
 
     nav {
       padding: 0rem 2rem;
       background-color: #f5f556;
       display: flex;
+      height: 2rem;
       justify-content: space-around;
-      border-bottom: 2px solid #1d2f1d;
+      border-bottom: 2px solid #1c2f1c;
 
       a {
         background-color: #ecec87;
-        padding: 0.7rem 0.5rem;
+        padding: 0.35rem 0.7rem 0.5rem;
         color: #464622;
         text-transform: uppercase;
         text-decoration: none;
@@ -59,7 +60,7 @@ main.layout.desktop {
 }
 
 main.layout.mobile {
-  .game-container {
+  .panel.game {
     flex: auto;
 
     nav {
