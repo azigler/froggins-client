@@ -1,6 +1,6 @@
 <template>
   <main class="froggins-auth">
-    <header class="froggins header">
+    <header>
       <h1 id="froggins">Froggins</h1>
     </header>
     <div class="login" v-show="!register">
@@ -170,6 +170,17 @@ export default {
 <style lang="scss">
 .froggins-auth {
   text-align: center;
+
+  > header {
+    background-color: #d7edd5;
+    border-bottom: 2px solid #c2d8c0;
+    box-shadow: 0px 2px 20px 0px #657566;
+
+    > h1:after {
+      content: '🐸';
+      position: absolute;
+    }
+  }
 
   div.login,
   div.register {

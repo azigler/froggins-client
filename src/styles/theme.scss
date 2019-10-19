@@ -1,13 +1,15 @@
 .froggins {
   &.header {
-    background-color: #d7edd5;
-    border-bottom: 2px solid #c2d8c0;
-    -webkit-box-shadow: 0px 2px 20px 0px #59925a;
+    background: linear-gradient(to left, #9ad89a, #e7ffff);
+    border-bottom: 2px solid #1c2f1c;
     box-shadow: 0px 2px 20px 0px #657566;
 
     > h1:after {
       content: '🐸';
-      position: absolute;
     }
+  }
+
+  &.panel {
+    background-color: #9ad89a;
   }
 }
