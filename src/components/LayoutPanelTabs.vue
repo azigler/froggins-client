@@ -1,45 +1,55 @@
 <template>
   <div class="layout-panel-tabs">
     <div
-      @click="currentTab = 'PanelFroggins'"
+      v-if="$store.state.player.isMobile"
+      @click="currentTab = 'PanelGame'"
       :class="
-        `tab froggins ${currentTab === 'PanelFroggins' ? 'selected' : ''}`
+        `yellow button help ${currentTab === 'PanelGame' ? 'selected' : ''}`
+      "
+    >
+      🕹️
+    </div>
+    <div
+      @click="currentTab = 'PanelParty'"
+      :class="
+        `yellow button party ${currentTab === 'PanelParty' ? 'selected' : ''}`
       "
     >
       🦎
     </div>
     <div
       @click="currentTab = 'PanelItems'"
-      :class="`tab items ${currentTab === 'PanelItems' ? 'selected' : ''}`"
-    >
-      📦
-    </div>
-    <div
-      @click="currentTab = 'PanelStructures'"
       :class="
-        `tab structures ${currentTab === 'PanelStructures' ? 'selected' : ''}`
+        `yellow button items ${currentTab === 'PanelItems' ? 'selected' : ''}`
       "
     >
-      🏠
+      ⚗️
     </div>
     <div
-      @click="currentTab = 'PanelWorld'"
-      :class="`tab world ${currentTab === 'PanelWorld' ? 'selected' : ''}`"
+      @click="currentTab = 'PanelDemesne'"
+      :class="
+        `yellow button demesne ${
+          currentTab === 'PanelDemesne' ? 'selected' : ''
+        }`
+      "
     >
-      🌐
+      🛏️
+    </div>
+    <div
+      @click="currentTab = 'PanelLog'"
+      :class="
+        `yellow button log ${currentTab === 'PanelLog' ? 'selected' : ''}`
+      "
+    >
+      📰
     </div>
     <div
       @click="currentTab = 'PanelHelp'"
-      :class="`tab help ${currentTab === 'PanelHelp' ? 'selected' : ''}`"
+      :class="
+        `yellow button help ${currentTab === 'PanelHelp' ? 'selected' : ''}`
+      "
     >
       ❔
-    </div>
-    <div
-      v-if="$store.state.player.isMobile"
-      @click="currentTab = 'PanelGame'"
-      :class="`tab help ${currentTab === 'PanelGame' ? 'selected' : ''}`"
-    >
-      🕹️
     </div>
   </div>
 </template>
@@ -50,7 +60,7 @@ export default {
   data() {
     return {
       currentTab: `${
-        this.$store.state.player.isMobile ? 'PanelGame' : 'PanelFroggins'
+        this.$store.state.player.isMobile ? 'PanelGame' : 'PanelParty'
       }`
     }
   },
@@ -66,60 +76,55 @@ export default {
 </script>
 
 <style lang="scss">
+.layout-panel-tabs {
+  display: flex;
+  background-color: #495d49;
+
+  .button {
+    padding: 0 0.4rem;
+    border-radius: 5px 5px 0 0;
+    border: 2px solid #495d49;
+    border-bottom: none;
+    border-bottom: 1px solid #495d49;
+
+    &:hover,
+    &.selected {
+      cursor: pointer;
+    }
+
+    &.selected {
+      border-bottom: none;
+      background-color: #c6c05f !important;
+    }
+  }
+}
+
 main.layout.desktop {
   .layout-panel-tabs {
-    display: flex;
     justify-content: space-between;
-    border: 2px solid #1c2f1c;
     margin: 0 0.2rem;
-    border-radius: 5px;
-    background-color: #1c2f1c;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    min-height: 1.8rem;
-
-    .tab {
-      border-radius: 5px;
-      padding: 0 0.4rem 0 0.5rem;
-      background-color: #cccc7d;
-
-      &:hover,
-      &.selected {
-        background-color: red;
-        cursor: pointer;
-      }
-    }
+    min-height: 2.1rem;
   }
 }
 
 main.layout.mobile {
   .layout-panel-tabs {
-    display: flex;
     justify-content: center;
-    background-color: gray;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     height: 5%;
-    min-height: 2rem;
 
-    div {
-      border-right: 2px solid #1c2f1c;
-      padding: 0 0.4rem 0 0.5rem;
-      background-color: #cccc7d;
+    .button {
       display: flex;
-      align-self: center;
       line-height: 2;
-      height: 100%;
       align-items: center;
+      flex: auto;
+      justify-content: center;
 
-      &:hover,
-      &.selected {
-        background-color: red;
-        cursor: pointer;
+      &:nth-child(1) {
+        border-left: none;
       }
 
-      &:first-child {
-        border-left: 2px solid #1c2f1c;
+      &:nth-child(6) {
+        border-right: none;
       }
     }
   }

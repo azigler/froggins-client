@@ -1,11 +1,11 @@
 <template>
-  <div class="panel world">
-    WORLD
+  <div class="panel-log">
+    LOG
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PanelWorld'
+  name: 'PanelLog'
 }
 </script>

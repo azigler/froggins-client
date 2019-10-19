@@ -28,17 +28,14 @@ footer.layout-footer {
   flex-direction: column;
 
   div.discord {
-    height: 3.2rem;
     align-items: center;
     display: flex;
     justify-content: center;
-    min-height: 2vh;
-    margin-top: 0.4rem;
+    padding: 0.3rem 0;
 
     > a {
-      height: 75%;
       width: 50%;
-      margin: 0 0.2rem;
+      margin: 0.4rem 0;
       background-position: 50% 50%;
       background-repeat: no-repeat;
       background-image: url('https://discordapp.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg');
@@ -56,7 +53,7 @@ footer.layout-footer {
 
 main.layout.desktop {
   @media only screen and (max-height: 769px) and (max-width: 1025px) {
-    div.discord {
+    .layout-footer {
       margin-top: 0.8rem;
     }
 
@@ -67,7 +64,7 @@ main.layout.desktop {
 }
 
 main.layout.desktop {
-  @media only screen and (min-width: 769px) and (min-width: 1025px) {
+  @media only screen and (min-width: 1025px) {
     div.discord {
       margin-top: 0;
     }
@@ -90,7 +87,7 @@ main.layout.mobile {
       left: 0;
       height: 100%;
       z-index: 0;
-      border-top: 1px solid #1d2f1d;
+      border-top: 2px solid #1c2f1c;
     }
 
     span {

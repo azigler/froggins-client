@@ -1,5 +1,5 @@
 <template>
-  <div class="panel debug">
+  <div class="debug">
     <div>
       <button @click="clickButton()">Click Me!</button>
       <span> {{ $store.state.player.uuid }} </span>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'PanelDebug',
+  name: 'LocationDebug',
   methods: {
     clickButton() {
       this.ribbitSend({
@@ -58,10 +58,8 @@ export default {
 </script>
 
 <style lang="scss">
-.panel.debug {
-  background-color: #9ad89a;
-  border: 2px solid #495d49;
+.debug {
   padding: 1.5rem;
-  margin: 0 auto;
+  background: #9ad89a;
 }
 </style>

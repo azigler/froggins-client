@@ -1,11 +1,11 @@
 <template>
-  <div class="panel-items">
-    ITEMS
+  <div class="panel-demesne">
+    DEMESNE
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PanelItems'
+  name: 'PanelDemesne'
 }
 </script>

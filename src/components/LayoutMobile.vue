@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import PanelFroggins from './PanelFroggins'
+import PanelParty from './PanelParty'
 import PanelItems from './PanelItems'
-import PanelStructures from './PanelStructures'
-import PanelWorld from './PanelWorld'
+import PanelDemesne from './PanelDemesne'
+import PanelLog from './PanelLog'
 import PanelHelp from './PanelHelp'
 import LayoutFooter from './LayoutFooter'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
@@ -28,10 +28,10 @@ import PanelGame from './PanelGame'
 export default {
   name: 'LayoutDesktop',
   components: {
-    PanelFroggins,
+    PanelParty,
     PanelItems,
-    PanelStructures,
-    PanelWorld,
+    PanelDemesne,
+    PanelLog,
     PanelHelp,
     LayoutFooter,
     LayoutOnlinePlayers,
@@ -74,11 +74,6 @@ main.layout.mobile {
     h1 {
       font-size: 1rem;
     }
-  }
-
-  .panel {
-    flex: auto;
-    border-bottom: none;
   }
 }
 </style>

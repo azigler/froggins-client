@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss">
 .layout-location {
-  border: 2px solid #1c2f1c;
+  border: 2px solid #495d49;
   margin: 0.2rem;
   border-radius: 5px;
   margin-bottom: 0;

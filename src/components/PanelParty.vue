@@ -1,11 +1,11 @@
 <template>
-  <div class="panel froggins">
-    FROGGINS
+  <div class="panel-party">
+    PARTY
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PanelFroggins'
+  name: 'PanelParty'
 }
 </script>

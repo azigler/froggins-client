@@ -1,5 +1,5 @@
 <template>
-  <div class="panel game">
+  <div id="game">
     <nav v-if="navShow">
       <router-link to="/">Home</router-link>
       <router-link to="/debug">Debug</router-link>
@@ -20,15 +20,15 @@ export default {
 </script>
 
 <style lang="scss">
-.panel.game {
-  border-top: none;
+#game {
+  display: flex;
+  flex-direction: column;
   flex: auto;
+  background: #9ad89a;
 }
 
 main.layout.desktop {
-  .panel.game {
-    flex: auto;
-
+  #game {
     nav {
       padding: 0rem 2rem;
       background-color: #f5f556;
@@ -60,9 +60,7 @@ main.layout.desktop {
 }
 
 main.layout.mobile {
-  .panel.game {
-    flex: auto;
-
+  #game {
     nav {
       padding: 0rem 2rem;
       background-color: #f5f556;

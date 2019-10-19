@@ -1,5 +1,5 @@
 <template>
-  <div class="panel Help">
+  <div class="panel-help">
     HELP
   </div>
 </template>

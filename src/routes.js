@@ -1,7 +1,7 @@
-import PanelDebug from './components/PanelDebug.vue'
+import LocationDebug from './components/LocationDebug.vue'
 import MainText from './components/MainText.vue'
 
 export default [
   { path: '/', component: MainText },
-  { path: '/debug', component: PanelDebug }
+  { path: '/debug', component: LocationDebug }
 ]
