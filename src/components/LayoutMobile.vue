@@ -1,13 +1,13 @@
 <template>
   <main class="layout mobile">
     <header class="froggins header">
+      <layout-time />
       <h1>Froggins</h1>
-      <layout-clock />
       <layout-online-players />
     </header>
     <layout-panel-tabs v-on:current-tab="setCurrentTab" />
-    <component :is="currentTab" />
-    <layout-location v-if="currentTab === 'GameContainer'" />
+    <component :is="currentTab" class="froggins panel" />
+    <layout-location v-if="currentTab === 'PanelGame'" />
     <layout-footer />
   </main>
 </template>
@@ -20,10 +20,10 @@ import PanelWorld from './PanelWorld'
 import PanelHelp from './PanelHelp'
 import LayoutFooter from './LayoutFooter'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
-import LayoutClock from './LayoutClock'
+import LayoutTime from './LayoutTime'
 import LayoutLocation from './LayoutLocation'
 import LayoutPanelTabs from './LayoutPanelTabs'
-import GameContainer from './GameContainer'
+import PanelGame from './PanelGame'
 
 export default {
   name: 'LayoutDesktop',
@@ -35,26 +35,15 @@ export default {
     PanelHelp,
     LayoutFooter,
     LayoutOnlinePlayers,
-    LayoutClock,
+    LayoutTime,
     LayoutLocation,
     LayoutPanelTabs,
-    GameContainer
-  },
-  created() {
-    console.log('created mobile')
-  },
-  destroyed() {
-    console.log('destroyed mobile')
+    PanelGame
   },
   data() {
     return {
       navShow: true,
-      currentTab: 'GameContainer'
-    }
-  },
-  watch: {
-    currentTab(newTab) {
-      this.$emit('current-tab', newTab)
+      currentTab: 'PanelGame'
     }
   },
   methods: {
@@ -88,13 +77,8 @@ main.layout.mobile {
   }
 
   .panel {
-    background-color: #9ad89a;
-    border: 2px solid #495d49;
-    padding: 0.5rem;
-    border-top: none;
     flex: auto;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom: none;
   }
 }
 </style>
