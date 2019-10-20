@@ -136,7 +136,7 @@ export default {
     }
 
     .status-bar {
-      border: 2px solid #1c2f1c;
+      border: 2px solid #495d49;
       margin: 0 0.2rem 0.2rem;
       border-radius: 0 0 6px 6px;
       border-top: none;

@@ -41,7 +41,7 @@
         `yellow button log ${currentTab === 'PanelLog' ? 'selected' : ''}`
       "
     >
-      📰
+      📘
     </div>
     <div
       @click="currentTab = 'PanelHelp'"
