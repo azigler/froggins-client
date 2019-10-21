@@ -107,7 +107,7 @@ main.layout.desktop {
 main.layout.mobile {
   .layout-panel-tabs {
     justify-content: center;
-    height: 5%;
+    height: 6%;
 
     .button {
       display: flex;
@@ -115,6 +115,7 @@ main.layout.mobile {
       align-items: center;
       flex: auto;
       justify-content: center;
+      margin-bottom: -0.1rem;
 
       &:nth-child(1) {
         border-left: none;

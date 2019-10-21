@@ -7,7 +7,7 @@
     </header>
     <layout-panel-tabs v-on:current-tab="setCurrentTab" />
     <component :is="currentTab" class="froggins panel" />
-    <layout-location v-if="currentTab === 'PanelGame'" />
+    <layout-location v-if="currentTab === 'Game'" />
     <layout-footer />
   </main>
 </template>
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       navShow: true,
-      currentTab: 'PanelGame'
+      currentTab: 'Game'
     }
   },
   methods: {

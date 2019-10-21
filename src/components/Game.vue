@@ -63,7 +63,6 @@ main.layout.desktop {
 main.layout.mobile {
   #game {
     nav {
-      margin-top: 0.3rem;
       background-color: #f5f556;
       display: flex;
       justify-content: space-around;
