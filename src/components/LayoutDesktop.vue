@@ -22,7 +22,7 @@
         <layout-footer />
       </div>
     </aside>
-    <panel-game />
+    <game />
   </main>
 </template>
 
@@ -37,7 +37,7 @@ import LayoutLocation from './LayoutLocation'
 import LayoutOnlinePlayers from './LayoutOnlinePlayers'
 import LayoutTime from './LayoutTime'
 import LayoutPanelTabs from './LayoutPanelTabs'
-import PanelGame from './PanelGame'
+import Game from './Game'
 
 export default {
   name: 'LayoutDesktop',
@@ -52,7 +52,7 @@ export default {
     LayoutOnlinePlayers,
     LayoutTime,
     LayoutPanelTabs,
-    PanelGame
+    Game
   },
   created() {
     window.addEventListener('keypress', e => {

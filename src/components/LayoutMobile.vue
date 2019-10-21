@@ -23,7 +23,7 @@ import LayoutOnlinePlayers from './LayoutOnlinePlayers'
 import LayoutTime from './LayoutTime'
 import LayoutLocation from './LayoutLocation'
 import LayoutPanelTabs from './LayoutPanelTabs'
-import PanelGame from './PanelGame'
+import Game from './Game'
 
 export default {
   name: 'LayoutDesktop',
@@ -38,7 +38,7 @@ export default {
     LayoutTime,
     LayoutLocation,
     LayoutPanelTabs,
-    PanelGame
+    Game
   },
   data() {
     return {

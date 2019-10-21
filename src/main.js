@@ -70,6 +70,7 @@ router.beforeEach((to, from, next) => {
   if (store.state.player.auth) {
     next()
   } else {
+    // TODO: make route to handle unauthenticated
     router.push('/')
   }
 })

@@ -2,10 +2,8 @@
   <div class="layout-panel-tabs">
     <div
       v-if="$store.state.player.isMobile"
-      @click="currentTab = 'PanelGame'"
-      :class="
-        `yellow button help ${currentTab === 'PanelGame' ? 'selected' : ''}`
-      "
+      @click="currentTab = 'Game'"
+      :class="`yellow button help ${currentTab === 'Game' ? 'selected' : ''}`"
     >
       🕹️
     </div>
@@ -33,7 +31,7 @@
         }`
       "
     >
-      🛏️
+      👑
     </div>
     <div
       @click="currentTab = 'PanelLog'"
@@ -59,9 +57,7 @@ export default {
   name: 'LayoutPanelTabs',
   data() {
     return {
-      currentTab: `${
-        this.$store.state.player.isMobile ? 'PanelGame' : 'PanelParty'
-      }`
+      currentTab: `${this.$store.state.player.isMobile ? 'Game' : 'PanelParty'}`
     }
   },
   mounted() {
@@ -104,6 +100,7 @@ main.layout.desktop {
     justify-content: space-between;
     margin: 0 0.2rem;
     min-height: 2.1rem;
+    border-radius: 4px 4px 0 0;
   }
 }
 

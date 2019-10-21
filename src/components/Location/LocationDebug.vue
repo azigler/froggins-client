@@ -1,6 +1,7 @@
 <template>
-  <div class="debug">
+  <div class="location debug">
     <div>
+      Location debug
       <button @click="clickButton()">Click Me!</button>
       <span> {{ $store.state.player.uuid }} </span>
       <span>Clicks: {{ $store.state.debug.clicks }}</span>
@@ -58,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-.debug {
+.explore.debug {
   padding: 1.5rem;
   background: #9ad89a;
 }

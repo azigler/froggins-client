@@ -1,11 +1,11 @@
 <template>
-  <div class="main text">
-    Text...
+  <div class="battle pve">
+    PvE battle
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MainText'
+  name: 'BattlePvE'
 }
 </script>

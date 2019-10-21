@@ -153,11 +153,15 @@ export default {
         data.id.split === 'reject-registration'
       ) {
         this.message = data.value
-      } else {
-        if (data.id === 'confirm-login' || data.id === 'confirm-registration') {
-          this.$store.commit('SET_PLAYER', { auth: true })
-          this.$router.replace('/')
-        }
+      }
+      if (data.id === 'confirm-login') {
+        this.$store.commit('SET_PLAYER', { auth: true })
+        // TODO: fetch player's current mode from server and put there
+        this.$router.replace('/location')
+      }
+      if (data.id === 'confirm-registration') {
+        this.$store.commit('SET_PLAYER', { auth: true })
+        this.$router.replace('/cutscene/intro')
       }
     }
   },

@@ -1,8 +1,9 @@
 <template>
   <div id="game">
     <nav v-if="navShow">
-      <router-link to="/">Home</router-link>
-      <router-link to="/debug">Debug</router-link>
+      <router-link to="/location">Location</router-link>
+      <router-link to="/battle">Battle</router-link>
+      <router-link to="/cutscene">Cutscene</router-link>
     </nav>
     <router-view />
   </div>
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-  name: 'PanelGame',
+  name: 'Game',
   data() {
     return {
       navShow: true
@@ -62,12 +63,11 @@ main.layout.desktop {
 main.layout.mobile {
   #game {
     nav {
-      padding: 0rem 2rem;
+      margin-top: 0.3rem;
       background-color: #f5f556;
       display: flex;
       justify-content: space-around;
       border-bottom: 2px solid #1d2f1d;
-      border: 2px solid #1c311c;
       border-top: none;
       height: 5%;
 
