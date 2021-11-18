@@ -31,6 +31,7 @@ export default new Vuex.Store({
     SOCKET_ONOPEN(state, event) {
       Vue.prototype.$socket = event.currentTarget
       state.socket.isConnected = true
+      state.server.online = true
       state.socket.status = '🔌✅ Connected to Froggins!'
     },
     SOCKET_ONCLOSE(state) {
