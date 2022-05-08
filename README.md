@@ -3,3 +3,5 @@
 # froggins-client *\*\*(deprecated)\*\**
 
 > :frog::computer: Client for [Froggins](https://froggins.andrewzigler.com) browser game.
+
+See also: [froggins-server](https://github.com/azigler/froggins-server)
